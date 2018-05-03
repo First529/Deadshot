@@ -14,6 +14,7 @@ public class Player2 extends GameObject{
 	private double gravity = 0.5;
 	private final double MAX_SPEED = 10;
 	private static int player2HP = 200;
+	private static boolean hit = false;
 	
 	private Handler handler;
 
@@ -24,6 +25,10 @@ public class Player2 extends GameObject{
 	
 	public static int getHP() {
 		return player2HP;
+	}
+	
+	public static boolean isDamaged() {
+		return hit;
 	}
 	
 
@@ -49,14 +54,17 @@ public class Player2 extends GameObject{
 	private void Collision(LinkedList<GameObject> object) {
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject  = handler.object.get(i);
+			hit = false;
 			
 			if (tempObject.getId() == ObjectId.Bullet) {
 			
 				if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
 					player2HP -= 20;
+					hit = true;
 				}
 				if (getBoundsLeft().intersects((Rectangle2D) tempObject.getBounds())) {
 					player2HP -= 20;
+					hit = true;
 				}
 			}
 			

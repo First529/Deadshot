@@ -5,7 +5,9 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter{
 	
-	Handler handler;
+	public Handler handler;
+	
+	public static Bullet bullet;
 	
 	public KeyInput(Handler handler) {
 		this.handler = handler;
@@ -32,8 +34,13 @@ public class KeyInput extends KeyAdapter{
 					tempObject.setVelocityY(-10);
 				}
 				if (key == KeyEvent.VK_G) {
-					if (tempObject.getVelocityX() != 0) 
-					handler.addObject(new Bullet(tempObject.getX(), tempObject.getY(), ObjectId.Bullet, tempObject.getFacing() * 10));
+					if (Player1.isSpellBarFull()) {
+						bullet = new Bullet(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Bullet, handler, tempObject.getFacing() * 10);
+						handler.addObject(bullet);
+						Player1.resetSpellBar();
+					}
+					
+					
 				}
 			}
 			
@@ -53,7 +60,7 @@ public class KeyInput extends KeyAdapter{
 				}
 				if (key == KeyEvent.VK_SLASH) {
 					if (tempObject.getVelocityX() != 0)
-					handler.addObject(new Bullet(tempObject.getX(), tempObject.getY(), ObjectId.Bullet2, tempObject.getFacing() * 10));
+					handler.addObject(new Bullet(tempObject.getX(), tempObject.getY(), ObjectId.Bullet2, handler, tempObject.getFacing() * 10));
 				}
 			}
 		}

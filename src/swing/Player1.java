@@ -14,21 +14,39 @@ public class Player1 extends GameObject{
 	private double gravity = 0.5;
 	private final double MAX_SPEED = 10;
 	private static int player1HP = 200;
+	private static boolean hit = false;
+
+	public static int spellBar = 1;
 	
 	private Handler handler;
+	
+	public Texture texture = Game.getInstance();
 
 	public Player1(double x, double y, Handler handler, ObjectId id) {
 		super(x, y, id);
 		this.handler = handler;
 	}
 	
+	public static void resetSpellBar() {
+		spellBar = 1;
+	}
+	
+	public static boolean isSpellBarFull() {
+		if (spellBar >= 100) return true;
+		return false;
+	} 
+	
 	public static int getHP() {
 		return player1HP;
 	}
 	
+	public static boolean isDamaged() {
+		return hit;
+	}
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
+		if (velocityX == 0) spellBar++;
 		x += velocityX;
 		y += velocityY;
 		
@@ -49,15 +67,19 @@ public class Player1 extends GameObject{
 	private void Collision(LinkedList<GameObject> object) {
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject  = handler.object.get(i);
-			
+			hit = false;
+			 
 			if (tempObject.getId() == ObjectId.Bullet2) {
 				
 				if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
 					player1HP -= 20;
+					hit = true;
 				}
 				if (getBoundsLeft().intersects((Rectangle2D) tempObject.getBounds())) {
 					player1HP -= 20;
+					hit = true;
 				}
+			
 			}
 			
 			
@@ -94,14 +116,16 @@ public class Player1 extends GameObject{
 	public void render(Graphics g) {
 		
 		g.setColor(Color.blue);
-		g.fillRect((int)x, (int)y, (int)width, (int)height);
 		
-		Graphics2D g2d = (Graphics2D) g;
-		g.setColor(Color.red);
-		g2d.draw(getBounds());
-		g2d.draw(getBoundsRight());
-		g2d.draw(getBoundsLeft());
-		g2d.draw(getBoundsTop());
+		g.drawImage(texture.player1[0], (int)x, (int)y, 70, 150, null);
+//		g.fillRect((int)x, (int)y, (int)width, (int)height);
+//		
+//		Graphics2D g2d = (Graphics2D) g;
+//		g.setColor(Color.red);
+//		g2d.draw(getBounds());
+//		g2d.draw(getBoundsRight());
+//		g2d.draw(getBoundsLeft());
+//		g2d.draw(getBoundsTop());
 		
 		
 	}
