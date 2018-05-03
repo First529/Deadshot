@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Shape;
+import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
 public class Block extends GameObject{
@@ -12,6 +13,7 @@ public class Block extends GameObject{
 	
 	private int type;
 
+
 	public Block(double x, double y, int type, ObjectId id) {
 		super(x, y, id);
 		this.type = type;
@@ -19,7 +21,6 @@ public class Block extends GameObject{
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
-		
 		
 	}
 
@@ -33,6 +34,8 @@ public class Block extends GameObject{
 	public Shape getBounds() {
 		return new Rectangle((int)x, (int)y, 32, 32);
 	}
+	
+	
 
 
 	

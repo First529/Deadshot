@@ -20,7 +20,9 @@ public class Bullet extends GameObject{
 	@Override
 	public void update(LinkedList<GameObject> object) {
 		x += velocityX;
+		Collision(object);
 		if (Player2.isDamaged()) handler.removeObject(KeyInput.bullet);
+		
 	}
 
 	@Override
@@ -35,6 +37,18 @@ public class Bullet extends GameObject{
 		return new Rectangle((int)x , (int)y, 16, 16);
 	}
 	
+	
+	public void Collision(LinkedList<GameObject> object) {
+		for (int i = 0; i < handler.object.size(); i++) {
+			GameObject tempObject = handler.object.get(i);
+			
+			if (tempObject.getId() == ObjectId.Block) {
+				if (this.getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
+					handler.removeObject(KeyInput.bullet);
+				}
+			}
+		}
+	}
 	
 
 }
