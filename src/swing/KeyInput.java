@@ -53,7 +53,7 @@ public class KeyInput extends KeyAdapter{
 				}
 				if (key == KeyEvent.VK_SLASH) {
 					if (tempObject.getVelocityX() != 0)
-					handler.addObject(new Bullet2(tempObject.getX(), tempObject.getY(), ObjectId.Bullet2, tempObject.getFacing() * 10));
+					handler.addObject(new Bullet(tempObject.getX(), tempObject.getY(), ObjectId.Bullet2, tempObject.getFacing() * 10));
 				}
 			}
 		}

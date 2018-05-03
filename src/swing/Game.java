@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public class Game extends Canvas implements Runnable{
 	
@@ -16,15 +17,22 @@ public class Game extends Canvas implements Runnable{
 
 	public Handler handler;
 	
+	private BufferedImage level = null;
+	
 	private void init() {
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
 		
+		ImageLoader loader = new ImageLoader();
+		level = loader.loadImage("/level.png");
+	
 		handler = new Handler();
 		
+		loadImageLevel(level);
+		
 		handler.addObject(new Player1(100, 100, handler, ObjectId.Player1));
-		handler.addObject(new Player2(200, 100, handler, ObjectId.Player2));
-		handler.createLevel();
+		handler.addObject(new Player2(700, 100, handler, ObjectId.Player2));
+//		handler.createLevel();
 		
 		this.addKeyListener(new KeyInput(handler));
 	}
@@ -70,9 +78,6 @@ public class Game extends Canvas implements Runnable{
 	
 	private void update() {
 		handler.update();
-		
-		
-		
 	}
 	
 	private void render() {
@@ -107,6 +112,32 @@ public class Game extends Canvas implements Runnable{
 		g.dispose();
 		bs.show();
 		
+	}
+	
+	private void loadImageLevel(BufferedImage image) { 
+		int w = image.getWidth();
+		int h = image.getHeight();
+		
+		System.out.println(w + " x " + h);
+		
+		int count = 0;
+		
+		for (int i = 0; i < h; i++) {
+			for (int j = 0; j < w; j++) {
+				//reference https://stackoverflow.com/questions/25761438/understanding-bufferedimage-getrgb-output-values
+				int pixel = image.getRGB(i, j);
+				int red = (pixel >> 16) & 0xff;
+				int green = (pixel >> 8) & 0xff;
+				int blue = (pixel) & 0xff;
+				if (red == 255 && green == 255 && blue == 255) {
+					count++;
+					handler.addObject(new Block(i*32 , j*32 ,ObjectId.Block));
+				}
+				
+			}
+			
+		}
+		System.out.println(count);
 	}
 	
 
