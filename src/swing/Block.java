@@ -7,9 +7,14 @@ import java.awt.Shape;
 import java.util.LinkedList;
 
 public class Block extends GameObject{
+	
+	public Texture texture = Game.getInstance();
+	
+	private int type;
 
-	public Block(double x, double y, ObjectId id) {
+	public Block(double x, double y, int type, ObjectId id) {
 		super(x, y, id);
+		this.type = type;
 	}
 
 	@Override
@@ -20,9 +25,8 @@ public class Block extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.WHITE);
-		g.drawRect((int)x, (int)y, 32, 32);
-		
+		if (type == 0) g.drawImage(texture.block[0], (int)x, (int)y, null);
+	
 	}
 
 	@Override

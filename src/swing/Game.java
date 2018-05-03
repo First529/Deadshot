@@ -19,9 +19,13 @@ public class Game extends Canvas implements Runnable{
 	
 	private BufferedImage level = null;
 	
+	public static Texture texture;
+	
 	private void init() {
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
+		
+		texture = new Texture();
 		
 		ImageLoader loader = new ImageLoader();
 		level = loader.loadImage("/level.png");
@@ -32,7 +36,7 @@ public class Game extends Canvas implements Runnable{
 		
 		handler.addObject(new Player1(100, 100, handler, ObjectId.Player1));
 		handler.addObject(new Player2(700, 100, handler, ObjectId.Player2));
-//		handler.createLevel();
+
 		
 		this.addKeyListener(new KeyInput(handler));
 	}
@@ -131,13 +135,17 @@ public class Game extends Canvas implements Runnable{
 				int blue = (pixel) & 0xff;
 				if (red == 255 && green == 255 && blue == 255) {
 					count++;
-					handler.addObject(new Block(i*32 , j*32 ,ObjectId.Block));
+					handler.addObject(new Block(i*32 , j*32 ,0,ObjectId.Block));
 				}
 				
 			}
 			
 		}
 		System.out.println(count);
+	}
+	
+	public static Texture getInstance() {
+		return texture;
 	}
 	
 

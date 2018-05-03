@@ -25,7 +25,6 @@ public class Player2 extends GameObject{
 	public static int getHP() {
 		return player2HP;
 	}
-
 	
 
 	@Override
