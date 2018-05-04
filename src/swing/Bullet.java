@@ -11,6 +11,8 @@ public class Bullet extends GameObject{
 	
 	private Handler handler;
 	
+	public Texture texture = Game.getInstance();
+	
 	public Bullet(double x, double y, ObjectId id, Handler handler, int velocityX) {
 		super(x, y, id);
 		this.velocityX = velocityX;
@@ -21,14 +23,16 @@ public class Bullet extends GameObject{
 	public void update(LinkedList<GameObject> object) {
 		x += velocityX;
 		Collision(object);
-		if (Player2.isDamaged()) handler.removeObject(KeyInput.bullet);
+		if (Player2.isDamaged() || Player1.isDamaged()) handler.removeObject(KeyInput.bullet);
 		
 	}
 
 	@Override
 	public void render(Graphics g) {
-		g.setColor(Color.red);
-		g.fillOval((int)x, (int)y, 16, 16);
+		if (this.getId() == ObjectId.Bullet) 
+		g.drawImage(texture.bullet[0], (int) x, (int) y, 40 , 30, null);
+		if (this.getId() == ObjectId.Bullet2) 
+		g.drawImage(texture.bullet[1], (int) x, (int) y, 40 , 30, null);
 		
 	}
 

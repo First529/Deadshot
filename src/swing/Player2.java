@@ -16,7 +16,14 @@ public class Player2 extends GameObject{
 	private static int player2HP = 200;
 	private static boolean hit = false;
 	
+	public static int spellBar = 1;
+	
+	public static double xx = 0;
+	public static double yy = 0;
+	
 	private Handler handler;
+	
+	public Texture texture = Game.getInstance();
 
 	public Player2(double x, double y, Handler handler, ObjectId id) {
 		super(x, y, id);
@@ -27,6 +34,15 @@ public class Player2 extends GameObject{
 		return player2HP;
 	}
 	
+	public static void resetSpellBar() {
+		spellBar = 1;
+	}
+	
+	public static boolean isSpellBarFull() {
+		if (spellBar >= 200) return true;
+		return false;
+	} 
+	
 	public static boolean isDamaged() {
 		return hit;
 	}
@@ -34,8 +50,14 @@ public class Player2 extends GameObject{
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
+		if (velocityX != 0) spellBar++;
 		x += velocityX;
 		y += velocityY;
+		xx = x;
+		yy = y;
+		
+		
+		
 		
 		if (velocityX < 0) facing = -1;
 		else facing = 1;
@@ -103,15 +125,17 @@ public class Player2 extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		
-		g.setColor(Color.blue);
-		g.fillRect((int)x, (int)y, (int)width, (int)height);
+		g.drawImage(texture.player2[0], (int)x, (int)y, 60, 100, null);
 		
-		Graphics2D g2d = (Graphics2D) g;
-		g.setColor(Color.red);
-		g2d.draw(getBounds());
-		g2d.draw(getBoundsRight());
-		g2d.draw(getBoundsLeft());
-		g2d.draw(getBoundsTop());
+//		g.setColor(Color.blue);
+//		g.fillRect((int)x, (int)y, (int)width, (int)height);
+//		
+//		Graphics2D g2d = (Graphics2D) g;
+//		g.setColor(Color.red);
+//		g2d.draw(getBounds());
+//		g2d.draw(getBoundsRight());
+//		g2d.draw(getBoundsLeft());
+//		g2d.draw(getBoundsTop());
 		
 		
 	}

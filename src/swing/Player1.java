@@ -46,7 +46,7 @@ public class Player1 extends GameObject{
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
-		if (velocityX == 0) spellBar++;
+		if (velocityX == 0  && !this.isJumping()) spellBar++;
 		x += velocityX;
 		y += velocityY;
 		
@@ -69,14 +69,14 @@ public class Player1 extends GameObject{
 			GameObject tempObject  = handler.object.get(i);
 			hit = false;
 			 
-			if (tempObject.getId() == ObjectId.Bullet2) {
+			if (tempObject.getId() == ObjectId.Sword) {
 				
 				if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
-					player1HP -= 20;
+					player1HP -= 10;
 					hit = true;
 				}
 				if (getBoundsLeft().intersects((Rectangle2D) tempObject.getBounds())) {
-					player1HP -= 20;
+					player1HP -= 10;
 					hit = true;
 				}
 			
@@ -115,9 +115,7 @@ public class Player1 extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		
-		g.setColor(Color.blue);
-		
-		g.drawImage(texture.player1[0], (int)x, (int)y, 70, 150, null);
+		g.drawImage(texture.player1[0], (int)x, (int)y, 50, 100, null);
 //		g.fillRect((int)x, (int)y, (int)width, (int)height);
 //		
 //		Graphics2D g2d = (Graphics2D) g;

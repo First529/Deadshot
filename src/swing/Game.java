@@ -105,13 +105,16 @@ public class Game extends Canvas implements Runnable{
 		g2d.fillRect(5, 5, 200, 25); // player2
 		g2d.fillRect(600, 5, 200, 25); // player1
 		g2d.fillRect(5, 40 ,100, 25);
+		g2d.fillRect(600, 40 ,200, 25);
 		
 		g2d.setColor(Color.green);
-		if (Player2.getHP() > 0) g2d.fillRect(5, 5, Player2.getHP(), 25); // player2
-		if (Player1.getHP() > 0) g2d.fillRect(600, 5, Player1.getHP(), 25); // player1
+		if (Player1.getHP() > 0) g2d.fillRect(5, 5, Player1.getHP(), 25); // player2
+		if (Player2.getHP() > 0) g2d.fillRect(600, 5, Player2.getHP(), 25); // player1
 		g2d.setColor(Color.blue);
 		if (Player1.spellBar < 100)
 		g2d.fillRect(5, 40, Player1.spellBar, 25);
+		if (Player2.spellBar < 200)
+		g2d.fillRect(600, 40, Player2.spellBar, 25);
 		
 	
 		g2d.setColor(Color.white);
@@ -119,6 +122,9 @@ public class Game extends Canvas implements Runnable{
 		g2d.drawRect(600, 5, 200, 25); // player1
 		if (Player1.isSpellBarFull()) 
 		g2d.fillRect(5, 40, 100, 25);
+		
+		if (Player2.isSpellBarFull()) 
+		g2d.fillRect(600, 40, 200, 25);
 		
 		g.dispose();
 		bs.show();
