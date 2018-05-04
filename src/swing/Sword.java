@@ -20,15 +20,16 @@ public class Sword extends GameObject{
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
-		x = Player2.xx + 20;
-		y = Player2.yy + 30;
+		x = Player2.xx + 2;
+		y = Player2.yy + 20;
 		
 	}
 
 	@Override
 	public void render(Graphics g) {
 		
-		g.drawImage(texture.bullet[1], (int) x, (int) y, 40 , 30, null);
+		g.drawImage(texture.swords[1
+		                           ], (int) x, (int) y, 40 , 30, null);
 		
 	}
 

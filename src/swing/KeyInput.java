@@ -67,7 +67,7 @@ public class KeyInput extends KeyAdapter {
 							handler.addObject(sword);
 							Player2.resetSpellBar();
 
-							// }
+						
 						}
 					}
 				}

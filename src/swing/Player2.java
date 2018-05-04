@@ -125,8 +125,8 @@ public class Player2 extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		
-		g.drawImage(texture.player2[0], (int)x, (int)y, 60, 100, null);
-		
+		g.drawImage(texture.player2[0], (int)x, (int)y, 60, 90, null);
+	
 //		g.setColor(Color.blue);
 //		g.fillRect((int)x, (int)y, (int)width, (int)height);
 //		

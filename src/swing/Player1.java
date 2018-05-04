@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class Player1 extends GameObject{
 	
@@ -20,11 +21,14 @@ public class Player1 extends GameObject{
 	
 	private Handler handler;
 	
+	private Random rand;
+	
 	public Texture texture = Game.getInstance();
 
 	public Player1(double x, double y, Handler handler, ObjectId id) {
 		super(x, y, id);
 		this.handler = handler;
+		rand = new Random();
 	}
 	
 	public static void resetSpellBar() {
@@ -72,11 +76,11 @@ public class Player1 extends GameObject{
 			if (tempObject.getId() == ObjectId.Sword) {
 				
 				if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
-					player1HP -= 10;
+					player1HP -= rand.nextInt(3) + 1;
 					hit = true;
 				}
 				if (getBoundsLeft().intersects((Rectangle2D) tempObject.getBounds())) {
-					player1HP -= 10;
+					player1HP -= rand.nextInt(3) + 1;
 					hit = true;
 				}
 			
@@ -115,7 +119,10 @@ public class Player1 extends GameObject{
 	@Override
 	public void render(Graphics g) {
 		
+		if (velocityX >= 0) 
 		g.drawImage(texture.player1[0], (int)x, (int)y, 50, 100, null);
+		else 
+		g.drawImage(texture.player1[1], (int)x, (int)y, 50, 100, null);
 //		g.fillRect((int)x, (int)y, (int)width, (int)height);
 //		
 //		Graphics2D g2d = (Graphics2D) g;

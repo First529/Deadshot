@@ -1,6 +1,7 @@
 package swing;
 
 import java.awt.image.BufferedImage;
+import java.util.Random;
 
 public class Texture {
 	
@@ -12,8 +13,9 @@ public class Texture {
 	private BufferedImage sword = null;
 	
 	public BufferedImage[] block = new BufferedImage[2];
-	public BufferedImage[] bullet = new BufferedImage[2];
-	public BufferedImage[] player1 = new BufferedImage[1];
+	public BufferedImage[] bullet = new BufferedImage[1];
+	public BufferedImage[] swords = new BufferedImage[4];
+	public BufferedImage[] player1 = new BufferedImage[2];
 	public BufferedImage[] player2 = new BufferedImage[1];
 	
 	public Texture() {
@@ -21,8 +23,8 @@ public class Texture {
 		ImageLoader loader = new ImageLoader();
 		try {
 			block_sheet = loader.loadImage("/2mzh3s1.png");
-			player1_sheet = loader.loadImage("/pixel.png");
-			player2_sheet = loader.loadImage("/assassin.png");
+			player1_sheet = loader.loadImage("/pixel - Copy.png");
+			player2_sheet = loader.loadImage("/assassin - Copy.png");
 			fireball = loader.loadImage("/fireball.png");
 			sword = loader.loadImage("/weapons_by_kenny1654-darqi7u.png");
 		} catch (Exception e) {
@@ -33,11 +35,18 @@ public class Texture {
 	}
 	
 	private void getTextures() {
+	
 		block[0] = this.grabImage(9, 2, 32, 32, block_sheet);
-		player1[0] = this.grabImage(1, 1, 60, 120, player1_sheet);
+		player1[0] = this.grabImage(1, 1, 55, 120, player1_sheet);
+		player1[1] = this.grabImage(2, 1, 55, 120, player1_sheet);
 		player2[0] = this.grabImage(1, 1, 60, 120, player2_sheet);
 		bullet[0] = this.grabImage(1, 1, 16, 16, fireball);
-		bullet[1] = this.grabImage(1, 2, 64, 64, sword);
+		swords[0] = this.grabImage(1, 1, 64, 64, sword);
+		swords[1] = this.grabImage(1, 2, 64, 64, sword);
+		swords[2] = this.grabImage(2, 1, 64, 64, sword);
+	
+		
+		
 	}
 	
 	private BufferedImage grabImage(int col, int row, int width, int height, BufferedImage image) {

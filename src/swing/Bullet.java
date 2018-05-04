@@ -31,7 +31,7 @@ public class Bullet extends GameObject{
 	public void render(Graphics g) {
 		if (this.getId() == ObjectId.Bullet) 
 		g.drawImage(texture.bullet[0], (int) x, (int) y, 40 , 30, null);
-		if (this.getId() == ObjectId.Bullet2) 
+		if (this.getId() == ObjectId.Sword) 
 		g.drawImage(texture.bullet[1], (int) x, (int) y, 40 , 30, null);
 		
 	}
