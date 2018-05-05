@@ -10,6 +10,8 @@ public class KeyInput extends KeyAdapter {
 	public static Bullet bullet;
 
 	public static Sword sword;
+	
+	public static boolean pressedALT = false;;
 
 	public KeyInput(Handler handler) {
 		this.handler = handler;
@@ -61,15 +63,21 @@ public class KeyInput extends KeyAdapter {
 				}
 				if (key == KeyEvent.VK_SLASH) {
 					if (Player2.isSpellBarFull()) {
-						if (tempObject.getVelocityX() != 0) {
+						if (tempObject.getVelocityX() != 0 && !tempObject.isJumping()) {
+							pressedALT = false;
 							sword = new Sword(tempObject.getX(), tempObject.getY(), ObjectId.Sword, handler,
-									tempObject.getFacing() * 10);
+							tempObject.getFacing() * 10);
 							handler.addObject(sword);
 							Player2.resetSpellBar();
 
-						
 						}
 					}
+				}
+				if (key == KeyEvent.VK_ALT) {
+					if (handler.object.contains(sword)) {
+						pressedALT = true;
+					}
+					
 				}
 
 				if (key == KeyEvent.VK_ESCAPE) {
