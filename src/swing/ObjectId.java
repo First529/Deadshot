@@ -6,6 +6,7 @@ public enum ObjectId {
 	Player2(),
 	Block(),
 	Bullet(),
+	Arrow(),
 	Sword;
 
 }

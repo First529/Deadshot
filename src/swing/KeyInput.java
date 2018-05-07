@@ -11,6 +11,8 @@ public class KeyInput extends KeyAdapter {
 
 	public static Sword sword;
 	
+	public static Arrow arrow;
+	
 	public static boolean pressedALT = false;;
 
 	public KeyInput(Handler handler) {
@@ -44,6 +46,8 @@ public class KeyInput extends KeyAdapter {
 						handler.addObject(bullet);
 						Player1.resetSpellBar();
 					}
+					
+					
 
 				}
 			}
