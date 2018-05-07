@@ -120,11 +120,15 @@ public class Game extends Canvas implements Runnable{
 		g2d.setColor(Color.white);
 		g2d.drawRect(5, 5, 200, 25); // player2
 		g2d.drawRect(600, 5, 200, 25); // player1
+		
+		
 		if (Player1.isSpellBarFull()) 
 		g2d.fillRect(5, 40, 100, 25);
 		
 		if (Player2.isSpellBarFull()) 
 		g2d.fillRect(600, 40, 200, 25);
+		
+		
 		
 		g.dispose();
 		bs.show();

@@ -41,15 +41,20 @@ public class KeyInput extends KeyAdapter {
 				}
 				if (key == KeyEvent.VK_G) {
 					if (Player1.isSpellBarFull()) {
-						bullet = new Bullet(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Bullet, handler,
-								tempObject.getFacing() * 10);
-						handler.addObject(bullet);
+//						bullet = new Bullet(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Bullet, handler,
+//								tempObject.getFacing() * 10);
+//						handler.addObject(bullet);
+						arrow = new Arrow(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Bullet, handler);
+						handler.addObject(arrow);
 						Player1.resetSpellBar();
 					}
 					
 					
 
 				}
+				
+				
+				
 			}
 
 			if (tempObject.getId() == ObjectId.Player2) {

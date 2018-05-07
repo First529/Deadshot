@@ -13,15 +13,15 @@ public class Sword extends GameObject{
 	
 	public Texture texture = Game.getInstance();
 	
-//	private Random rand = new Random();
-//	
-//	private int n;
-//	
+	private Random rand = new Random();
+	
+	private int n;
+	
 	public Sword(double x, double y, ObjectId id, Handler handler, int velocityX) {
 		super(x, y, id);
 		this.velocityX = velocityX;
 		this.handler = handler;
-//		n = rand.nextInt(2) + 1;
+		n = rand.nextInt(2) + 1;
 	}
 
 	@Override
@@ -42,11 +42,17 @@ public class Sword extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		
-		if (Player2.xs <= 0) 
-		g.drawImage(texture.swords[1], (int) x, (int) y, 40 , 30, null);
-		else 
-		g.drawImage(texture.swords[0], (int) x, (int) y, 40 , 30, null);
+		if (n == 1) {
+			if (Player2.xs <= 0) 
+				g.drawImage(texture.swords[1], (int) x, (int) y, 40 , 30, null);
+			else 
+				g.drawImage(texture.swords[0], (int) x, (int) y, 40 , 30, null);
+		} else {
+			if (Player2.xs <= 0) 
+				g.drawImage(texture.swords[3], (int) x, (int) y, 40 , 30, null);
+			else 
+				g.drawImage(texture.swords[2], (int) x, (int) y, 40 , 30, null);
+		}
 		
 		
 		

@@ -125,25 +125,14 @@ public class Player2 extends GameObject {
 
 	@Override
 	public void render(Graphics g) {
-		if (velocityX == 0) {
-			g.drawImage(texture.player2[1], (int) x, (int) y, 60, 90, null);
-//			g.drawImage(texture.swords[1], (int) x, (int) y, 40, 30, null);
+		if (velocityX <= 0) {
+			g.drawImage(texture.assassin[1], (int) x, (int) y, 60, 90, null);
+
 		} else if (velocityX > 0) {
-			g.drawImage(texture.player2[0], (int) x, (int) y, 60, 90, null);
-//			g.drawImage(texture.swords[0], (int) x, (int) y, 40, 30, null);
-		} else {
-			g.drawImage(texture.player2[1], (int) x, (int) y, 60, 90, null);
-//			g.drawImage(texture.swords[1], (int) x, (int) y, 40, 30, null);
+			g.drawImage(texture.assassin[0], (int) x, (int) y, 60, 90, null);
+
 		}
-		// g.setColor(Color.blue);
-		// g.fillRect((int)x, (int)y, (int)width, (int)height);
-		//
-		// Graphics2D g2d = (Graphics2D) g;
-		// g.setColor(Color.red);
-		// g2d.draw(getBounds());
-		// g2d.draw(getBoundsRight());
-		// g2d.draw(getBoundsLeft());
-		// g2d.draw(getBoundsTop());
+		
 
 	}
 

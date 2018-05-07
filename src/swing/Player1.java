@@ -57,10 +57,13 @@ public class Player1 extends GameObject {
 		x += velocityX;
 		y += velocityY;
 
-		if (velocityX < 0)
+		if (velocityX < 0) {
 			facing = -1;
-		else
+			Arrow.player1Facing = facing;
+		}else {
 			facing = 1;
+			Arrow.player1Facing = facing;
+		}
 
 		if (falling || jumping) {
 			velocityY += gravity;
@@ -137,19 +140,21 @@ public class Player1 extends GameObject {
 
 	@Override
 	public void render(Graphics g) {
+//
+//		if (velocityX >= 0)
+//			g.drawImage(texture.wizard[0], (int) x, (int) y, 50, 100, null);
+//		else
+//			g.drawImage(texture.wizard[1], (int) x, (int) y, 50, 100, null);
+		
+		if (velocityX >= 0) {
+			g.drawImage(texture.bowMaster[0], (int) x, (int) y, 60, 90, null);
+			
 
-		if (velocityX >= 0)
-			g.drawImage(texture.player1[0], (int) x, (int) y, 50, 100, null);
-		else
-			g.drawImage(texture.player1[1], (int) x, (int) y, 50, 100, null);
-		// g.fillRect((int)x, (int)y, (int)width, (int)height);
-		//
-		// Graphics2D g2d = (Graphics2D) g;
-		// g.setColor(Color.red);
-		// g2d.draw(getBounds());
-		// g2d.draw(getBoundsRight());
-		// g2d.draw(getBoundsLeft());
-		// g2d.draw(getBoundsTop());
+		} else {
+			g.drawImage(texture.bowMaster[1], (int) x, (int) y, 60, 90, null);
+			
+
+		}
 
 	}
 
