@@ -67,7 +67,7 @@ public class KeyInput extends KeyAdapter {
 				}
 				if (key == KeyEvent.VK_SLASH) {
 					if (Player2.isSpellBarFull()) {
-						if (tempObject.getVelocityX() != 0 && !tempObject.isJumping()) {
+						if (!tempObject.isJumping()) {
 							pressedALT = false;
 							sword = new Sword(tempObject.getX(), tempObject.getY(), ObjectId.Sword, handler,
 							tempObject.getFacing() * 10);
@@ -77,10 +77,13 @@ public class KeyInput extends KeyAdapter {
 						}
 					}
 				}
-				if (key == KeyEvent.VK_ALT) {
-					if (handler.object.contains(sword)) {
-						pressedALT = true;
-					}
+				if (key == KeyEvent.VK_L) {
+					
+						if (handler.object.contains(sword)) {
+							pressedALT = true; 
+							
+						}
+					
 					
 				}
 
@@ -109,6 +112,9 @@ public class KeyInput extends KeyAdapter {
 					tempObject.setVelocityX(0);
 				if (key == KeyEvent.VK_LEFT)
 					tempObject.setVelocityX(0);
+				if (key == KeyEvent.VK_ALT)
+					pressedALT = false;
+					
 
 			}
 		}

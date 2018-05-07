@@ -79,13 +79,15 @@ public class Player1 extends GameObject {
 			hit = false;
 
 			if (tempObject.getId() == ObjectId.Sword) {
-
+				
 				if (KeyInput.pressedALT) {
-
+					
+					
 					if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
 						player1HP -= rand.nextInt(3) + 1;
 						hit = true;
 						hitCount++;
+						KeyInput.pressedALT = false;
 						
 
 					}
@@ -93,12 +95,16 @@ public class Player1 extends GameObject {
 						player1HP -= rand.nextInt(3) + 1;
 						hit = true;
 						hitCount++;
+						KeyInput.pressedALT = false;
 						
 
 					}
-				}
-
+					
+					
+				} 
 			}
+
+			
 
 			if (tempObject.getId() == ObjectId.Block) {
 
