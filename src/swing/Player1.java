@@ -52,17 +52,15 @@ public class Player1 extends GameObject {
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
-		if (velocityX == 0 && !this.isJumping())
+		if (!this.isJumping())
 			spellBar++;
 		x += velocityX;
 		y += velocityY;
 
 		if (velocityX < 0) {
 			facing = -1;
-			Arrow.player1Facing = facing;
 		}else {
 			facing = 1;
-			Arrow.player1Facing = facing;
 		}
 
 		if (falling || jumping) {
@@ -83,14 +81,14 @@ public class Player1 extends GameObject {
 
 			if (tempObject.getId() == ObjectId.Sword) {
 				
-				if (KeyInput.pressedALT) {
+				if (KeyInput.pressedL) {
 					
 					
 					if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
 						player1HP -= rand.nextInt(3) + 1;
 						hit = true;
 						hitCount++;
-						KeyInput.pressedALT = false;
+						KeyInput.pressedL = false;
 						
 
 					}
@@ -98,7 +96,7 @@ public class Player1 extends GameObject {
 						player1HP -= rand.nextInt(3) + 1;
 						hit = true;
 						hitCount++;
-						KeyInput.pressedALT = false;
+						KeyInput.pressedL = false;
 						
 
 					}
@@ -146,7 +144,7 @@ public class Player1 extends GameObject {
 //		else
 //			g.drawImage(texture.wizard[1], (int) x, (int) y, 50, 100, null);
 		
-		if (velocityX >= 0) {
+		if (KeyInput.checkFacing1 == -1) {
 			g.drawImage(texture.bowMaster[0], (int) x, (int) y, 60, 90, null);
 			
 

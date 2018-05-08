@@ -18,11 +18,13 @@ public class Arrow extends GameObject{
 	public static int player1Facing;
 	
 	private double time = 0.0;
-	private double angle = Math.toRadians(60);
-	private double initV = 12;
-	private double maxH = (0.5*initV*initV*Math.sin(angle)*Math.sin(angle))/9.81;
-	private double totalTime =( 2.0 * initV * Math.sin(angle) )/ 9.81;
-	private double timePos = totalTime / 30;
+	public static double angle = 60; 
+	private double realY, realY2;
+	public static double initV = 15;
+	private double totalTime =( 2.0 * initV * Math.sin(Math.toRadians(angle)) )/ 9.81;
+	private double timePos = totalTime / 20;
+	private double time1 = timePos;
+	private double diff;
 	
 
 
@@ -37,20 +39,26 @@ public class Arrow extends GameObject{
 	public void update(LinkedList<GameObject> object) {
 		if (i <= 50) {
 			if (i >= 50) handler.removeObject(KeyInput.arrow); 
+			time += timePos;
+			time1 += timePos;
+			if (KeyInput.checkFacing1 == -1) {
 				
-			if (player1Facing == 1) {
-				time += timePos;
-				
-				x += initV * Math.cos(angle)* time ;
-				y -= ((initV * Math.sin(angle)*time) + 0.5*-9.81*time*time) ;
+				x += initV * Math.cos(Math.toRadians(angle))* timePos * 4;
+				realY = ((initV * Math.sin(Math.toRadians(angle))*time) + 0.5*-9.81*time*time);
+				realY2 = ((initV * Math.sin(Math.toRadians(angle))*time1) + 0.5*-9.81*time1*time1);
+				diff = realY2 - realY;
+				y -= diff * 10;
+				System.out.println(totalTime);
 				Collision(object);
-				System.out.println(y);
-			}
-			if (player1Facing == -1) {
-				time += timePos;
 				
-				x -= initV * Math.cos(angle)* time ;
-				y -= ((initV * Math.sin(angle)*time) + 0.5*-9.81*time*time) ;
+			}
+			if (KeyInput.checkFacing1 == 1) {
+				
+				x -= initV * Math.cos(Math.toRadians(angle))* time * 1.1;
+				realY = ((initV * Math.sin(Math.toRadians(angle))*time) + 0.5*-9.81*time*time);
+				realY2 = ((initV * Math.sin(Math.toRadians(angle))*time1) + 0.5*-9.81*time1*time1);
+				diff = realY2 - realY;
+				y -= diff * 10;
 				Collision(object);
 			}
 			i++;
@@ -78,6 +86,12 @@ public class Arrow extends GameObject{
 			GameObject tempObject = handler.object.get(i);
 			
 			if (tempObject.getId() == ObjectId.Block) {
+				if (this.getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
+					handler.removeObject(KeyInput.arrow);
+				}
+			}
+			
+			if (tempObject.getId() == ObjectId.Player2) {
 				if (this.getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
 					handler.removeObject(KeyInput.arrow);
 				}

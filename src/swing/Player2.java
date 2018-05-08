@@ -125,10 +125,10 @@ public class Player2 extends GameObject {
 
 	@Override
 	public void render(Graphics g) {
-		if (velocityX <= 0) {
+		if (KeyInput.checkFacing2 == 1) {
 			g.drawImage(texture.assassin[1], (int) x, (int) y, 60, 90, null);
 
-		} else if (velocityX > 0) {
+		} else  {
 			g.drawImage(texture.assassin[0], (int) x, (int) y, 60, 90, null);
 
 		}

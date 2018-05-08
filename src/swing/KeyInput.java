@@ -10,10 +10,14 @@ public class KeyInput extends KeyAdapter {
 	public static Bullet bullet;
 
 	public static Sword sword;
-	
+
 	public static Arrow arrow;
-	
-	public static boolean pressedALT = false;;
+
+	public static boolean pressedL = false;;
+
+	public static int checkFacing1;
+
+	public static int checkFacing2;
 
 	public KeyInput(Handler handler) {
 		this.handler = handler;
@@ -29,42 +33,56 @@ public class KeyInput extends KeyAdapter {
 					tempObject.setVelocityX(5);
 					tempObject.setFacing(1);
 					tempObject.setFalling(false);
+					checkFacing1 = -1;
 				}
 				if (key == KeyEvent.VK_A) {
 					tempObject.setVelocityX(-5);
 					tempObject.setFacing(-1);
 					tempObject.setFalling(false);
+					checkFacing1 = 1;
 				}
 				if (key == KeyEvent.VK_SPACE && !tempObject.isJumping()) {
 					tempObject.setJumping(true);
 					tempObject.setVelocityY(-10);
 				}
 				if (key == KeyEvent.VK_G) {
-					if (Player1.isSpellBarFull()) {
-//						bullet = new Bullet(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Bullet, handler,
-//								tempObject.getFacing() * 10);
-//						handler.addObject(bullet);
+					if (Player1.isSpellBarFull() && tempObject.velocityX == 0) {
+						// bullet = new Bullet(tempObject.getX() + 10, tempObject.getY() + 30,
+						// ObjectId.Bullet, handler,
+						// tempObject.getFacing() * 10);
+						// handler.addObject(bullet);
 						arrow = new Arrow(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Bullet, handler);
 						handler.addObject(arrow);
 						Player1.resetSpellBar();
 					}
-					
-					
 
 				}
 				
-				
-				
+				if (key == KeyEvent.VK_Q) {
+					Arrow.angle -= 1;
+				}
+				if (key == KeyEvent.VK_E) {
+					Arrow.angle += 1;
+				}
+				if (key == KeyEvent.VK_Z) {
+					Arrow.initV -= 1;
+				}
+				if (key == KeyEvent.VK_C) {
+					Arrow.initV += 1;
+				}
+
 			}
 
 			if (tempObject.getId() == ObjectId.Player2) {
 				if (key == KeyEvent.VK_RIGHT) {
 					tempObject.setVelocityX(5);
 					tempObject.setFalling(false);
+					checkFacing2 = -1;
 				}
 				if (key == KeyEvent.VK_LEFT) {
 					tempObject.setVelocityX(-5);
 					tempObject.setFalling(false);
+					checkFacing2 = 1;
 				}
 				if (key == KeyEvent.VK_CONTROL && !tempObject.isJumping()) {
 					tempObject.setJumping(true);
@@ -73,9 +91,9 @@ public class KeyInput extends KeyAdapter {
 				if (key == KeyEvent.VK_SLASH) {
 					if (Player2.isSpellBarFull()) {
 						if (!tempObject.isJumping()) {
-							pressedALT = false;
+							pressedL = false;
 							sword = new Sword(tempObject.getX(), tempObject.getY(), ObjectId.Sword, handler,
-							tempObject.getFacing() * 10);
+									tempObject.getFacing() * 10);
 							handler.addObject(sword);
 							Player2.resetSpellBar();
 
@@ -83,13 +101,12 @@ public class KeyInput extends KeyAdapter {
 					}
 				}
 				if (key == KeyEvent.VK_L) {
-					
-						if (handler.object.contains(sword)) {
-							pressedALT = true; 
-							
-						}
-					
-					
+
+					if (handler.object.contains(sword)) {
+						pressedL = true;
+
+					}
+
 				}
 
 				if (key == KeyEvent.VK_ESCAPE) {
@@ -117,9 +134,8 @@ public class KeyInput extends KeyAdapter {
 					tempObject.setVelocityX(0);
 				if (key == KeyEvent.VK_LEFT)
 					tempObject.setVelocityX(0);
-				if (key == KeyEvent.VK_ALT)
-					pressedALT = false;
-					
+				if (key == KeyEvent.VK_L)
+					pressedL = false;
 
 			}
 		}

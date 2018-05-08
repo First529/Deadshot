@@ -2,6 +2,7 @@ package swing;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
@@ -120,6 +121,12 @@ public class Game extends Canvas implements Runnable{
 		g2d.setColor(Color.white);
 		g2d.drawRect(5, 5, 200, 25); // player2
 		g2d.drawRect(600, 5, 200, 25); // player1
+		Font fnt0 = new Font("arial",Font.BOLD, 15);
+		g.setFont(fnt0);
+		g2d.drawString("Angle: ", 5 , 100);
+		g2d.drawString("Velocity: ", 5 , 125);
+		g2d.drawString(String.format("%.2f", Arrow.angle), 70, 100);
+		g2d.drawString(String.format("%.2f", Arrow.initV), 80, 125);
 		
 		
 		if (Player1.isSpellBarFull()) 
