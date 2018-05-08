@@ -54,7 +54,7 @@ public class Arrow extends GameObject{
 			}
 			if (KeyInput.checkFacing1 == 1) {
 				
-				x -= initV * Math.cos(Math.toRadians(angle))* time * 1.1;
+				x -= initV * Math.cos(Math.toRadians(angle))* timePos * 4;
 				realY = ((initV * Math.sin(Math.toRadians(angle))*time) + 0.5*-9.81*time*time);
 				realY2 = ((initV * Math.sin(Math.toRadians(angle))*time1) + 0.5*-9.81*time1*time1);
 				diff = realY2 - realY;

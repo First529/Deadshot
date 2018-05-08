@@ -34,7 +34,7 @@ public class Controller implements Initializable {
 		stage.close();
 		try {
 			Game game = new Game();
-			game.setPreferredSize(new Dimension(800, 600));
+			game.setPreferredSize(new Dimension(1000, 600));
 			game.setMaximumSize(new Dimension(800, 600));
 			game.setMaximumSize(new Dimension(800, 600));
 

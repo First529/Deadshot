@@ -121,6 +121,7 @@ public class Game extends Canvas implements Runnable{
 		g2d.setColor(Color.white);
 		g2d.drawRect(5, 5, 200, 25); // player2
 		g2d.drawRect(600, 5, 200, 25); // player1
+		
 		Font fnt0 = new Font("arial",Font.BOLD, 15);
 		g.setFont(fnt0);
 		g2d.drawString("Angle: ", 5 , 100);
