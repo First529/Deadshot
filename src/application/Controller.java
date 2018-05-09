@@ -8,7 +8,10 @@ import javax.swing.JFrame;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import swing.Game;
@@ -21,6 +24,8 @@ public class Controller implements Initializable {
 	private Button setting;
 	@FXML
 	private Button quit;
+	
+	private Stage stage;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -30,11 +35,11 @@ public class Controller implements Initializable {
 	@FXML
 	public void handlePlay(ActionEvent event) {
 
-		Stage stage = (Stage) play.getScene().getWindow();
+		stage = (Stage) play.getScene().getWindow();
 		stage.close();
 		try {
 			Game game = new Game();
-			game.setPreferredSize(new Dimension(1000, 600));
+			game.setPreferredSize(new Dimension(800, 575));
 			game.setMaximumSize(new Dimension(800, 600));
 			game.setMaximumSize(new Dimension(800, 600));
 
@@ -50,13 +55,25 @@ public class Controller implements Initializable {
 		} catch (Exception ex) {
 			System.out.println("Can't open game.");
 		}
-
+		
+	
 	}
-
+	
 	@FXML
-	public void handlerSetting() {
-
+	public void handleSetting(ActionEvent event) {
+		stage = (Stage) setting.getScene().getWindow();
+		stage.close();
+		try {
+			Parent root = (Parent)FXMLLoader.load(getClass().getResource("SettingUI.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
+
 
 	@FXML
 	public void handlerQuit() {

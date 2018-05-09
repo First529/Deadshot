@@ -148,8 +148,7 @@ public class Game extends Canvas implements Runnable{
 		int h = image.getHeight();
 		
 		System.out.println(w + " x " + h);
-		
-		int count = 0;
+	
 		
 		for (int i = 0; i < h; i++) {
 			for (int j = 0; j < w; j++) {
@@ -159,14 +158,17 @@ public class Game extends Canvas implements Runnable{
 				int green = (pixel >> 8) & 0xff;
 				int blue = (pixel) & 0xff;
 				if (red == 255 && green == 255 && blue == 255) {
-					count++;
 					handler.addObject(new Block(i*32 , j*32 ,0,ObjectId.Block));
 				}
+				if (red == 255 && green == 106 && blue == 0) {
+					handler.addObject(new Block(i*32, j*32,1,ObjectId.Block1));
+				}
+				
 				
 			}
 			
 		}
-		System.out.println(count);
+		
 	}
 	
 	public static Texture getInstance() {

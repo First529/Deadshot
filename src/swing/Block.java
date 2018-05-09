@@ -26,7 +26,8 @@ public class Block extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		if (type == 0) g.drawImage(texture.block[0], (int)x, (int)y, null);
+		if (type == 0) g.drawImage(texture.blocks[0], (int)x, (int)y, null);
+		if (type == 1) g.drawImage(texture.blocks[1], (int)x, (int)y, null);
 	
 	}
 

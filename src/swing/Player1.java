@@ -107,7 +107,7 @@ public class Player1 extends GameObject {
 
 			
 
-			if (tempObject.getId() == ObjectId.Block) {
+			if (tempObject.getId() == ObjectId.Block || tempObject.getId() == ObjectId.Block1) {
 
 				if (getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
 					y = tempObject.getY() - (height);

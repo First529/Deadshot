@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="71.0" prefWidth="603.0" text="Deadshot" textAlignment="CENTER">
@@ -25,7 +24,7 @@
             <Font name="Courier New" size="25.0" />
          </font>
       </Button>
-      <Button fx:id="setting" mnemonicParsing="false" onAction="#handlerSetting" prefHeight="50.0" prefWidth="140.0" text="Setting">
+      <Button fx:id="setting" mnemonicParsing="false" onAction="#handleSetting" prefHeight="50.0" prefWidth="140.0" text="Setting">
          <VBox.margin>
             <Insets bottom="10.0" left="230.0" right="20.0" top="10.0" />
          </VBox.margin>
