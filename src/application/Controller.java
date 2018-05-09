@@ -1,6 +1,6 @@
 package application;
 
-import java.awt.Dimension;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -14,7 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import swing.Game;
+
 
 public class Controller implements Initializable {
 
@@ -38,20 +38,15 @@ public class Controller implements Initializable {
 		stage = (Stage) play.getScene().getWindow();
 		stage.close();
 		try {
-			Game game = new Game();
-			game.setPreferredSize(new Dimension(800, 575));
-			game.setMaximumSize(new Dimension(800, 600));
-			game.setMaximumSize(new Dimension(800, 600));
-
-			JFrame frame = new JFrame("Dead shot");
-			frame.add(game);
-			frame.pack();
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setResizable(false);
-			frame.setLocationRelativeTo(null);
-			frame.setVisible(true);
-
-			game.start();
+			
+			Parent root = (Parent)FXMLLoader.load(getClass().getResource("LevelUI.fxml"));
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			stage.setScene(scene);
+			stage.show();
+			
+			
+			
 		} catch (Exception ex) {
 			System.out.println("Can't open game.");
 		}

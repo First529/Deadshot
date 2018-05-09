@@ -8,6 +8,10 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
+import javax.swing.JFrame;
+
+import application.Controller;
+
 public class Game extends Canvas implements Runnable {
 
 	private boolean running = false;
@@ -33,7 +37,7 @@ public class Game extends Canvas implements Runnable {
 
 		handler = new Handler();
 
-		loadImageLevel(level);
+		handler.loadImageLevel(level);
 
 		handler.addObject(new Player1(100, 100, handler, ObjectId.Player1));
 		handler.addObject(new Player2(700, 100, handler, ObjectId.Player2));
@@ -46,6 +50,7 @@ public class Game extends Canvas implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 	}
+	
 
 	@Override
 	public void run() {
@@ -95,6 +100,7 @@ public class Game extends Canvas implements Runnable {
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect(0, 0, getWidth(), getHeight());
 		handler.render(g2d);
+		
 
 		g2d.setColor(Color.gray);
 		g2d.fillRect(5, 5, 200, 25); // player2
@@ -129,44 +135,16 @@ public class Game extends Canvas implements Runnable {
 
 		if (Player2.isSpellBarFull())
 			g2d.fillRect(600, 40, 200, 25);
+		
+//		if (Player1.getHP() <= 0 || Player2.getHP() <= 0)
 
-		g.dispose();
-		bs.show();
 
-	}
-
-	private void loadImageLevel(BufferedImage image) {
-		int w = image.getWidth();
-		int h = image.getHeight();
-
-		System.out.println(w + " x " + h);
-
-		for (int i = 0; i < h; i++) {
-			for (int j = 0; j < w; j++) {
-				// reference
-				// https://stackoverflow.com/questions/25761438/understanding-bufferedimage-getrgb-output-values
-				int pixel = image.getRGB(i, j);
-				int red = (pixel >> 16) & 0xff;
-				int green = (pixel >> 8) & 0xff;
-				int blue = (pixel) & 0xff;
-				if (red == 255 && green == 255 && blue == 255) {
-					handler.addObject(new Block(i * 32, j * 32, 0, ObjectId.Block));
-				}
-				if (red == 255 && green == 106 && blue == 0) {
-					handler.addObject(new Block(i * 32, j * 32, 1, ObjectId.Block1));
-				}
-				if (red == 64 && green == 64 && blue == 64) {
-					handler.addObject(new Block(i * 32, j * 32, 3, ObjectId.Block2));
-				}
-				if (red == 255 && green == 0 && blue == 0) {
-					handler.addObject(new Block(i * 32, j * 32, 2, ObjectId.BlockLava));
-				}
-				
-			}
-
-		}
+		bs.show(); 
+		
 
 	}
+
+
 
 	public static Texture getInstance() {
 		return texture;

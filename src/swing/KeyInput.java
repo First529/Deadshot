@@ -1,7 +1,14 @@
 package swing;
 
+import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+
+import javax.swing.JFrame;
+
+import application.Controller;
+import application.Main;
+import javafx.stage.Stage;
 
 public class KeyInput extends KeyAdapter {
 
@@ -109,9 +116,6 @@ public class KeyInput extends KeyAdapter {
 
 				}
 
-				if (key == KeyEvent.VK_ESCAPE) {
-					System.exit(1);
-				}
 			}
 		}
 	}

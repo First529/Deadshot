@@ -23,7 +23,7 @@ public class Sword extends GameObject{
 		this.handler = handler;
 		n = rand.nextInt(2) + 1;
 	}
-
+	
 	@Override
 	public void update(LinkedList<GameObject> object) {
 		if (Player1.hitCount >= 10) {
@@ -42,17 +42,10 @@ public class Sword extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		if (n == 1) {
-			if (Player2.xs <= 0) 
+			if (KeyInput.checkFacing2 == 1) 
 				g.drawImage(texture.swords[1], (int) x, (int) y, 40 , 30, null);
 			else 
 				g.drawImage(texture.swords[0], (int) x, (int) y, 40 , 30, null);
-		} else {
-			if (Player2.xs <= 0) 
-				g.drawImage(texture.swords[3], (int) x, (int) y, 40 , 30, null);
-			else 
-				g.drawImage(texture.swords[2], (int) x, (int) y, 40 , 30, null);
-		}
 		
 		
 		

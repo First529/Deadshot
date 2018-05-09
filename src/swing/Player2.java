@@ -48,7 +48,7 @@ public class Player2 extends GameObject {
 	public static boolean isDamaged() {
 		return hit;
 	}
-
+	
 	@Override
 	public void update(LinkedList<GameObject> object) {
 		if (velocityX != 0)

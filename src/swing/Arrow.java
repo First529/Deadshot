@@ -32,7 +32,7 @@ public class Arrow extends GameObject{
 		super(x, y, id);
 		this.handler = handler;
 		
-		
+	
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class Arrow extends GameObject{
 		
 		}
 		
-		
+
 		
 	}
 
@@ -85,7 +85,7 @@ public class Arrow extends GameObject{
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
 			
-			if (tempObject.getId() == ObjectId.Block) {
+			if (tempObject.getId() == ObjectId.Block || tempObject.getId() == ObjectId.Block1 || tempObject.getId() == ObjectId.Block2) {
 				if (this.getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
 					handler.removeObject(KeyInput.arrow);
 				}
