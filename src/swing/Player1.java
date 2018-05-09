@@ -107,7 +107,7 @@ public class Player1 extends GameObject {
 
 			
 
-			if (tempObject.getId() == ObjectId.Block || tempObject.getId() == ObjectId.Block1) {
+			if (tempObject.getId() == ObjectId.Block || tempObject.getId() == ObjectId.Block1 || tempObject.getId() == ObjectId.Block2) {
 
 				if (getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
 					y = tempObject.getY() - (height);
@@ -132,6 +132,17 @@ public class Player1 extends GameObject {
 				}
 
 			}
+			
+			if (tempObject.getId() == ObjectId.BlockLava) {
+
+				if (getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
+					player1HP = 0;
+				} 
+
+				
+
+			}
+
 
 		}
 	}
@@ -145,11 +156,11 @@ public class Player1 extends GameObject {
 //			g.drawImage(texture.wizard[1], (int) x, (int) y, 50, 100, null);
 		
 		if (KeyInput.checkFacing1 == -1) {
-			g.drawImage(texture.bowMaster[0], (int) x, (int) y, 60, 90, null);
+			g.drawImage(texture.bowMaster[0], (int) x, (int) y, 50, 90, null);
 			
 
 		} else {
-			g.drawImage(texture.bowMaster[1], (int) x, (int) y, 60, 90, null);
+			g.drawImage(texture.bowMaster[1], (int) x, (int) y, 50, 90, null);
 			
 
 		}

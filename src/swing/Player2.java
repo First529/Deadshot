@@ -92,7 +92,7 @@ public class Player2 extends GameObject {
 				}
 			}
 
-			if (tempObject.getId() == ObjectId.Block) {
+			if (tempObject.getId() == ObjectId.Block || tempObject.getId() == ObjectId.Block1 || tempObject.getId() == ObjectId.Block2) {
 
 				if (getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
 					y = tempObject.getY() - (height);
@@ -116,6 +116,16 @@ public class Player2 extends GameObject {
 					x = tempObject.getX() + 35;
 
 				}
+
+			}
+			
+			if (tempObject.getId() == ObjectId.BlockLava) {
+
+				if (getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
+					player2HP = 0;
+				} 
+
+				
 
 			}
 

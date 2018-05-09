@@ -14,7 +14,7 @@ public class Texture {
 	private BufferedImage sword = null;
 	private BufferedImage arrow_sheet = null;
 	
-	public BufferedImage[] blocks = new BufferedImage[3];
+	public BufferedImage[] blocks = new BufferedImage[4];
 	public BufferedImage[] bullet = new BufferedImage[2];
 	public BufferedImage[] swords = new BufferedImage[4];
 	public BufferedImage[] wizard = new BufferedImage[2];
@@ -45,12 +45,13 @@ public class Texture {
 		blocks[0] = this.grabImage(3, 1, 32, 32, block_sheet);
 		blocks[1] = this.grabImage(4, 1, 32, 32, block_sheet);
 		blocks[2] = this.grabImage(16, 16, 32, 32, block_sheet);
+		blocks[3] = this.grabImage(2, 2, 32, 32, block_sheet);
 		wizard[0] = this.grabImage(1, 1, 55, 120, wizard_sheet);
 		wizard[1] = this.grabImage(2, 1, 55, 120, wizard_sheet);
 		assassin[0] = this.grabImage(1, 1, 59, 120, assassin_sheet);
 		assassin[1] = this.grabImage(2, 1, 59, 120, assassin_sheet);
-		bowMaster[0] = this.grabImage(1, 1, 59, 120, bow_master_sheet);
-		bowMaster[1] = this.grabImage(2, 1, 59, 120, bow_master_sheet);
+		bowMaster[0] = this.grabImage(1, 1, 50, 120, bow_master_sheet);
+		bowMaster[1] = this.grabImage(2, 1, 50, 120, bow_master_sheet);
 		bullet[0] = this.grabImage(1, 1, 16, 16, fireball);
 		bullet[1] = this.grabImage(2, 1, 16, 16, fireball);
 		swords[0] = this.grabImage(1, 1, 64, 64, sword);
