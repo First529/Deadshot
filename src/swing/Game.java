@@ -15,6 +15,8 @@ import application.Controller;
 public class Game extends Canvas implements Runnable {
 
 	private boolean running = false;
+	
+	public static String URL = null;
 
 	private Thread thread;
 
@@ -33,7 +35,7 @@ public class Game extends Canvas implements Runnable {
 		texture = new Texture();
 
 		ImageLoader loader = new ImageLoader();
-		level = loader.loadImage("/level2.png");
+		level = loader.loadImage(URL);
 
 		handler = new Handler();
 
@@ -136,8 +138,6 @@ public class Game extends Canvas implements Runnable {
 		if (Player2.isSpellBarFull())
 			g2d.fillRect(600, 40, 200, 25);
 		
-//		if (Player1.getHP() <= 0 || Player2.getHP() <= 0)
-
 
 		bs.show(); 
 		

@@ -45,8 +45,6 @@ public class Controller implements Initializable {
 			stage.setScene(scene);
 			stage.show();
 			
-			
-			
 		} catch (Exception ex) {
 			System.out.println("Can't open game.");
 		}
