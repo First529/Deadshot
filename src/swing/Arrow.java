@@ -124,7 +124,10 @@ public class Arrow extends GameObject{
 			
 			if (tempObject.getId() == ObjectId.Block || tempObject.getId() == ObjectId.Block1 || tempObject.getId() == ObjectId.Block2) {
 				if (this.getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
+					if (LevelController.player1Character.equals("hunter"))
 					handler.removeObject(KeyInput.arrow);
+					if (LevelController.player2Character.equals("hunter"))
+						handler.removeObject(KeyInput.arrow2);
 				}
 			}
 			

@@ -144,6 +144,22 @@ public class KeyInput extends KeyAdapter {
 					}
 				}
 				
+				if (LevelController.player2Character.equals("hunter")) {
+					
+					if (key == KeyEvent.VK_I) {
+						Arrow.angle -= 1;
+					}
+					if (key == KeyEvent.VK_O) {
+						Arrow.angle += 1;
+					}
+					if (key == KeyEvent.VK_J) {
+						Arrow.initV -= 1;
+					}
+					if (key == KeyEvent.VK_K) {
+						Arrow.initV += 1;
+					}
+				}
+				
 				if (LevelController.player2Character.equals("assassin")) {
 				if (key == KeyEvent.VK_L) {
 
