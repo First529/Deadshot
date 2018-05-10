@@ -77,16 +77,19 @@ public class LevelController implements Initializable {
 
 		if (GameCharacter.Assassin.equals(character)) {
 			 field1.setText("assassin");
+			 box2.getItems().remove(GameCharacter.Assassin);
 			 player1Character = field1.getText();
 		}
 
 		if (GameCharacter.Wizard.equals(character)) {
 			 field1.setText("wizard");
+			 box2.getItems().remove(GameCharacter.Wizard);
 			 player1Character = field1.getText();
 		}
 
 		if (GameCharacter.Hunter.equals(character)) {
 			field1.setText("hunter");
+			box2.getItems().remove(GameCharacter.Hunter);
 			player1Character = field1.getText();
 		}
 	}
@@ -96,16 +99,19 @@ public class LevelController implements Initializable {
 
 		if (GameCharacter.Assassin.equals(character)) {
 			 field2.setText("assassin");
+			 box1.getItems().remove(GameCharacter.Assassin);
 			 player2Character = field2.getText();
 		}
 
 		if (GameCharacter.Wizard.equals(character)) {
 			 field2.setText("wizard");
+			 box1.getItems().remove(GameCharacter.Wizard);
 			 player2Character = field2.getText();
 		}
 
 		if (GameCharacter.Hunter.equals(character)) {
 			field2.setText("hunter");
+			box1.getItems().remove(GameCharacter.Hunter);
 			player2Character = field2.getText();
 		}
 	}

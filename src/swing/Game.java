@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
 
 import application.Controller;
+import application.LevelController;
 
 public class Game extends Canvas implements Runnable {
 
@@ -27,6 +28,9 @@ public class Game extends Canvas implements Runnable {
 	private BufferedImage level = null;
 
 	public static Texture texture;
+	
+	public static Player1 p1;
+	public static Player2 p2;
 
 	private void init() {
 		WIDTH = getWidth();
@@ -38,11 +42,14 @@ public class Game extends Canvas implements Runnable {
 		level = loader.loadImage(URL);
 
 		handler = new Handler();
+		
+		p1 = new Player1(100, 100, handler, ObjectId.Player1);
+		p2 = new Player2(700, 100, handler, ObjectId.Player2);
 
 		handler.loadImageLevel(level);
 
-		handler.addObject(new Player1(100, 100, handler, ObjectId.Player1));
-		handler.addObject(new Player2(700, 100, handler, ObjectId.Player2));
+		handler.addObject(p1);
+		handler.addObject(p2);
 
 		this.addKeyListener(new KeyInput(handler));
 	}
@@ -127,10 +134,19 @@ public class Game extends Canvas implements Runnable {
 
 		Font fnt0 = new Font("arial", Font.BOLD, 15);
 		g.setFont(fnt0);
-		g2d.drawString("Angle: ", 5, 100);
-		g2d.drawString("Velocity: ", 5, 125);
-		g2d.drawString(String.format("%.2f", Arrow.angle), 70, 100);
-		g2d.drawString(String.format("%.2f", Arrow.initV), 80, 125);
+		if (LevelController.player1Character.equals("hunter")) {
+			g2d.drawString("Angle: ", 5, 100);
+			g2d.drawString("Velocity: ", 5, 125);
+			g2d.drawString(String.format("%.2f", Arrow.angle), 70, 100);
+			g2d.drawString(String.format("%.2f", Arrow.initV), 80, 125);
+		}
+		
+		if (LevelController.player2Character.equals("hunter")) {
+			g2d.drawString("Angle: ", 650, 100);
+			g2d.drawString("Velocity: ", 650, 125);
+			g2d.drawString(String.format("%.2f", Arrow.angle), 720, 100);
+			g2d.drawString(String.format("%.2f", Arrow.initV), 730, 125);
+		}
 
 		if (Player1.isSpellBarFull())
 			g2d.fillRect(5, 40, 100, 25);

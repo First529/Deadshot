@@ -7,6 +7,8 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
+import application.LevelController;
+
 public class Arrow extends GameObject{
 	
 	private Handler handler;
@@ -37,6 +39,8 @@ public class Arrow extends GameObject{
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
+		if (LevelController.player1Character.equals("hunter")) {
+	
 		if (i <= 50) {
 			if (i >= 50) handler.removeObject(KeyInput.arrow); 
 			time += timePos;
@@ -64,6 +68,39 @@ public class Arrow extends GameObject{
 			i++;
 		
 		}
+		}
+		
+		if (LevelController.player2Character.equals("hunter")) {
+			
+			if (i <= 50) {
+				if (i >= 50) handler.removeObject(KeyInput.arrow2); 
+				time += timePos;
+				time1 += timePos;
+				if (KeyInput.checkFacing2 == -1) {
+					
+					x += initV * Math.cos(Math.toRadians(angle))* timePos * 4;
+					realY = ((initV * Math.sin(Math.toRadians(angle))*time) + 0.5*-9.81*time*time);
+					realY2 = ((initV * Math.sin(Math.toRadians(angle))*time1) + 0.5*-9.81*time1*time1);
+					diff = realY2 - realY;
+					y -= diff * 10;
+					System.out.println(totalTime);
+					Collision(object);
+					
+				}
+				if (KeyInput.checkFacing2 == 1) {
+					
+					x -= initV * Math.cos(Math.toRadians(angle))* timePos * 4;
+					realY = ((initV * Math.sin(Math.toRadians(angle))*time) + 0.5*-9.81*time*time);
+					realY2 = ((initV * Math.sin(Math.toRadians(angle))*time1) + 0.5*-9.81*time1*time1);
+					diff = realY2 - realY;
+					y -= diff * 10;
+					Collision(object);
+				}
+				i++;
+			
+			}
+			}
+		
 		
 
 		
@@ -94,6 +131,12 @@ public class Arrow extends GameObject{
 			if (tempObject.getId() == ObjectId.Player2) {
 				if (this.getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
 					handler.removeObject(KeyInput.arrow);
+				}
+			}
+			
+			if (tempObject.getId() == ObjectId.Player1) {
+				if (this.getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
+					handler.removeObject(KeyInput.arrow2);
 				}
 			}
 		}

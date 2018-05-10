@@ -20,8 +20,16 @@ public class KeyInput extends KeyAdapter {
 	public static Sword sword;
 
 	public static Arrow arrow;
+	
+	public static Bullet bullet2;
 
-	public static boolean pressedL = false;;
+	public static Sword sword2;
+
+	public static Arrow arrow2;
+
+	public static boolean pressedL = false;
+	
+	public static boolean pressedF = false;
 
 	public static int checkFacing1;
 
@@ -55,12 +63,20 @@ public class KeyInput extends KeyAdapter {
 				}
 				if (key == KeyEvent.VK_G) {
 					if (Player1.isSpellBarFull() && tempObject.velocityX == 0) {
-						// bullet = new Bullet(tempObject.getX() + 10, tempObject.getY() + 30,
-						// ObjectId.Bullet, handler,
-						// tempObject.getFacing() * 10);
-						// handler.addObject(bullet);
-						arrow = new Arrow(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Bullet, handler);
-						handler.addObject(arrow);
+						if (LevelController.player1Character.equals("wizard")) {
+						 bullet = new Bullet(tempObject.getX() + 10, tempObject.getY() + 30,ObjectId.Bullet, handler,tempObject.getFacing() * 10);
+						 handler.addObject(bullet);
+						}
+						if (LevelController.player1Character.equals("hunter")) {
+							arrow = new Arrow(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Arrow, handler);
+							handler.addObject(arrow);
+						}
+						if (LevelController.player1Character.equals("assassin")) {
+							pressedF = false;
+							sword = new Sword(tempObject.getX(), tempObject.getY(), ObjectId.Sword, handler,
+									tempObject.getFacing() * 10);
+							handler.addObject(sword);
+						}
 						Player1.resetSpellBar();
 					}
 
@@ -79,6 +95,16 @@ public class KeyInput extends KeyAdapter {
 					if (key == KeyEvent.VK_C) {
 						Arrow.initV += 1;
 					}
+				}
+				
+				if (LevelController.player1Character.equals("assassin")) {
+					if (key == KeyEvent.VK_F) {
+						if (handler.object.contains(sword)) {
+							pressedF = true;
+
+						}
+					}
+
 				}
 
 			}
@@ -99,24 +125,34 @@ public class KeyInput extends KeyAdapter {
 					tempObject.setVelocityY(-10);
 				}
 				if (key == KeyEvent.VK_SLASH) {
-					if (Player2.isSpellBarFull()) {
-						if (!tempObject.isJumping()) {
-							pressedL = false;
-							sword = new Sword(tempObject.getX(), tempObject.getY(), ObjectId.Sword, handler,
-									tempObject.getFacing() * 10);
-							handler.addObject(sword);
+					if (Player2.isSpellBarFull() && tempObject.velocityX == 0) {
+						if (LevelController.player2Character.equals("wizard")) {
+							 bullet2 = new Bullet(tempObject.getX() + 10, tempObject.getY() + 30,ObjectId.Bullet2, handler,tempObject.getFacing() * 10);
+							 handler.addObject(bullet2);
+							}
+							if (LevelController.player2Character.equals("hunter")) {
+								arrow2 = new Arrow(tempObject.getX() + 10, tempObject.getY() + 30, ObjectId.Arrow2, handler);
+								handler.addObject(arrow2);
+							}
+							if (LevelController.player2Character.equals("assassin")) {
+								pressedF = false;
+								sword2 = new Sword(tempObject.getX(), tempObject.getY(), ObjectId.Sword2, handler,
+										tempObject.getFacing() * 10);
+								handler.addObject(sword2);
+							}
 							Player2.resetSpellBar();
-
-						}
 					}
 				}
+				
+				if (LevelController.player2Character.equals("assassin")) {
 				if (key == KeyEvent.VK_L) {
 
-					if (handler.object.contains(sword)) {
+					if (handler.object.contains(sword2)) {
 						pressedL = true;
 
 					}
 
+				}
 				}
 
 			}

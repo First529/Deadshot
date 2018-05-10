@@ -9,7 +9,10 @@ public enum ObjectId {
 	Block2(),
 	BlockLava(),
 	Bullet(),
+	Bullet2(),
 	Arrow(),
-	Sword;
+	Arrow2(),
+	Sword(),
+	Sword2();
 
 }

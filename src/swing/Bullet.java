@@ -7,6 +7,8 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
+import application.LevelController;
+
 public class Bullet extends GameObject{
 	
 	private Handler handler;
@@ -21,18 +23,35 @@ public class Bullet extends GameObject{
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
-		x += velocityX;
-		Collision(object);
-		if (Player2.isDamaged() || Player1.isDamaged()) handler.removeObject(KeyInput.bullet);
 		
+		if (LevelController.player1Character.equals("wizard")) {
+			if (KeyInput.checkFacing1 == -1) {
+				x += velocityX;
+			} else {
+				x -= velocityX;
+			}
+		}
+		
+		if (LevelController.player2Character.equals("wizard")) {
+			if (KeyInput.checkFacing2 == -1) {
+				x += velocityX;
+			} else {
+				x -= velocityX;
+			}
+		}
+		
+		
+		
+		Collision(object);
+		if (Player2.isDamaged()) handler.removeObject(KeyInput.bullet);
+		if (Player1.isDamaged()) handler.removeObject(KeyInput.bullet2);
 	}
 
 	@Override
 	public void render(Graphics g) {
-		if (this.getId() == ObjectId.Bullet) 
+		
 		g.drawImage(texture.bullet[0], (int) x, (int) y, 40 , 30, null);
-		if (this.getId() == ObjectId.Sword) 
-		g.drawImage(texture.bullet[1], (int) x, (int) y, 40 , 30, null);
+		
 		
 	}
 
@@ -48,7 +67,10 @@ public class Bullet extends GameObject{
 			
 			if (tempObject.getId() == ObjectId.Block) {
 				if (this.getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
+					if (handler.object.contains(KeyInput.bullet))
 					handler.removeObject(KeyInput.bullet);
+					if (handler.object.contains(KeyInput.bullet2))
+					handler.removeObject(KeyInput.bullet2);
 				}
 			}
 		}

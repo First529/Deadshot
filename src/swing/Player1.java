@@ -21,6 +21,10 @@ public class Player1 extends GameObject {
 	private static int player1HP = 200;
 	private static boolean hit = false;
 	public static int hitCount = 0;
+	
+	public static double xx = 0;
+	public static double xs = 0;
+	public static double yy = 0;
 
 	public static int spellBar = 1;
 
@@ -56,10 +60,14 @@ public class Player1 extends GameObject {
 
 	@Override
 	public void update(LinkedList<GameObject> object) {
-		if (!this.isJumping())
+		if (player1HP <= 0) handler.removeObject(Game.p1);
+		if (velocityX == 0)
 			spellBar++;
 		x += velocityX;
 		y += velocityY;
+		xx = x;
+		yy = y;
+		xs = velocityX;
 
 		if (velocityX < 0) {
 			facing = -1;
@@ -83,7 +91,7 @@ public class Player1 extends GameObject {
 			GameObject tempObject = handler.object.get(i);
 			hit = false;
 
-			if (tempObject.getId() == ObjectId.Sword) {
+			if (tempObject.getId() == ObjectId.Sword2) {
 				
 				if (KeyInput.pressedL) {
 					
@@ -107,6 +115,18 @@ public class Player1 extends GameObject {
 					
 					
 				} 
+			}
+			
+			if (tempObject.getId() == ObjectId.Bullet2 || tempObject.getId() == ObjectId.Arrow2) {
+
+				if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
+					player1HP -= 20;
+					hit = true;
+				}
+				if (getBoundsLeft().intersects((Rectangle2D) tempObject.getBounds())) {
+					player1HP -= 20;
+					hit = true;
+				}
 			}
 
 			

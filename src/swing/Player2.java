@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
+import java.util.Random;
 
 import application.LevelController;
 
@@ -17,20 +18,24 @@ public class Player2 extends GameObject {
 	private final double MAX_SPEED = 10;
 	private static int player2HP = 200;
 	private static boolean hit = false;
+	public static int hitCount = 0;
 
 	public static int spellBar = 1;
 
-	public static double xx = 0;
-	public static double xs = 0;
-	public static double yy = 0;
+	public static double xx2 = 0;
+	public static double xs2 = 0;
+	public static double yy2 = 0;
 
 	private Handler handler;
+	
+	private Random rand;
 
 	public Texture texture = Game.getInstance();
 
 	public Player2(double x, double y, Handler handler, ObjectId id) {
 		super(x, y, id);
 		this.handler = handler;
+		rand = new Random();
 	}
 
 	public static int getHP() {
@@ -53,13 +58,14 @@ public class Player2 extends GameObject {
 	
 	@Override
 	public void update(LinkedList<GameObject> object) {
+		if (player2HP <= 0) handler.removeObject(Game.p2);
 		if (velocityX == 0)
 			spellBar++;
 		x += velocityX;
 		y += velocityY;
-		xx = x;
-		yy = y;
-		xs = velocityX;
+		xx2 = x;
+		yy2 = y;
+		xs2 = velocityX;
 
 		if (velocityX < 0)
 			facing = -1;
@@ -81,8 +87,35 @@ public class Player2 extends GameObject {
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
 			hit = false;
+			
 
-			if (tempObject.getId() == ObjectId.Bullet) {
+			if (tempObject.getId() == ObjectId.Sword) {
+				
+				if (KeyInput.pressedF) {
+					
+					
+					if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
+						player2HP -= rand.nextInt(3) + 1;
+						hit = true;
+						hitCount++;
+						KeyInput.pressedF = false;
+						
+
+					}
+					if (getBoundsLeft().intersects((Rectangle2D) tempObject.getBounds())) {
+						player2HP -= rand.nextInt(3) + 1;
+						hit = true;
+						hitCount++;
+						KeyInput.pressedF = false;
+						
+
+					}
+					
+					
+				} 
+			}
+
+			if (tempObject.getId() == ObjectId.Bullet || tempObject.getId() == ObjectId.Arrow) {
 
 				if (getBoundsRight().intersects((Rectangle2D) tempObject.getBounds())) {
 					player2HP -= 20;
