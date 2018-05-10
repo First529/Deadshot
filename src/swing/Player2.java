@@ -8,6 +8,8 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 
+import application.LevelController;
+
 public class Player2 extends GameObject {
 
 	private double width = 32, height = 64;
@@ -40,7 +42,7 @@ public class Player2 extends GameObject {
 	}
 
 	public static boolean isSpellBarFull() {
-		if (spellBar >= 200)
+		if (spellBar >= 100)
 			return true;
 		return false;
 	}
@@ -51,7 +53,7 @@ public class Player2 extends GameObject {
 	
 	@Override
 	public void update(LinkedList<GameObject> object) {
-		if (velocityX != 0)
+		if (velocityX == 0)
 			spellBar++;
 		x += velocityX;
 		y += velocityY;
@@ -135,12 +137,42 @@ public class Player2 extends GameObject {
 
 	@Override
 	public void render(Graphics g) {
-		if (KeyInput.checkFacing2 == 1) {
-			g.drawImage(texture.assassin[1], (int) x, (int) y, 60, 90, null);
+		
+		if (LevelController.player2Character.equals("hunter")) {
+			if (KeyInput.checkFacing2 == 1) {
+				g.drawImage(texture.bowMaster[1], (int) x, (int) y, 50, 90, null);
+			
 
-		} else  {
-			g.drawImage(texture.assassin[0], (int) x, (int) y, 60, 90, null);
+			} else {
+				g.drawImage(texture.bowMaster[0], (int) x, (int) y, 50, 90, null);
+			
 
+			}
+		}
+		
+		if (LevelController.player2Character.equals("wizard")) {
+			if (KeyInput.checkFacing2 == 1) {
+				g.drawImage(texture.wizard[1], (int) x, (int) y, 50, 90, null);
+			
+
+			} else {
+				g.drawImage(texture.wizard[0], (int) x, (int) y, 50, 90, null);
+			
+
+			}
+		}
+		
+		
+		if (LevelController.player2Character.equals("assassin")) {
+			
+			if (KeyInput.checkFacing2 == 1) {
+				g.drawImage(texture.assassin[1], (int) x, (int) y, 60, 90, null);
+
+			} else  {
+				g.drawImage(texture.assassin[0], (int) x, (int) y, 60, 90, null);
+
+			}
+			
 		}
 		
 

@@ -26,10 +26,16 @@ public class Block extends GameObject{
 
 	@Override
 	public void render(Graphics g) {
-		if (type == 0) g.drawImage(texture.blocks[0], (int)x, (int)y, null);
-		if (type == 1) g.drawImage(texture.blocks[1], (int)x, (int)y, null);
-		if (type == 2) g.drawImage(texture.blocks[2], (int)x, (int)y, null);
-		if (type == 3) g.drawImage(texture.blocks[3], (int)x, (int)y, null);
+
+		if (Game.URL == "/level2.png") {
+			if (type == 0) g.drawImage(texture.blocks[0], (int)x, (int)y, null);
+			if (type == 1) g.drawImage(texture.blocks[1], (int)x, (int)y, null);
+			if (type == 2) g.drawImage(texture.blocks[2], (int)x, (int)y, null);
+			if (type == 3) g.drawImage(texture.blocks[3], (int)x, (int)y, null);
+		
+		} else {
+			if (type == 0) g.drawImage(texture.blocks[4], (int)x, (int)y, null);
+		}
 	
 	}
 

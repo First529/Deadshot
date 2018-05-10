@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 
 import application.Controller;
+import application.LevelController;
 import application.Main;
 import javafx.stage.Stage;
 
@@ -64,18 +65,20 @@ public class KeyInput extends KeyAdapter {
 					}
 
 				}
+				if (LevelController.player1Character.equals("hunter")) {
 				
-				if (key == KeyEvent.VK_Q) {
-					Arrow.angle -= 1;
-				}
-				if (key == KeyEvent.VK_E) {
-					Arrow.angle += 1;
-				}
-				if (key == KeyEvent.VK_Z) {
-					Arrow.initV -= 1;
-				}
-				if (key == KeyEvent.VK_C) {
-					Arrow.initV += 1;
+					if (key == KeyEvent.VK_Q) {
+						Arrow.angle -= 1;
+					}
+					if (key == KeyEvent.VK_E) {
+						Arrow.angle += 1;
+					}
+					if (key == KeyEvent.VK_Z) {
+						Arrow.initV -= 1;
+					}
+					if (key == KeyEvent.VK_C) {
+						Arrow.initV += 1;
+					}
 				}
 
 			}

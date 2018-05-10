@@ -9,6 +9,10 @@ import java.awt.geom.Rectangle2D;
 import java.util.LinkedList;
 import java.util.Random;
 
+import application.LevelController;
+
+
+
 public class Player1 extends GameObject {
 
 	private double width = 32, height = 64;
@@ -149,23 +153,50 @@ public class Player1 extends GameObject {
 
 	@Override
 	public void render(Graphics g) {
-//
-//		if (velocityX >= 0)
-//			g.drawImage(texture.wizard[0], (int) x, (int) y, 50, 100, null);
-//		else
-//			g.drawImage(texture.wizard[1], (int) x, (int) y, 50, 100, null);
-		
-		if (KeyInput.checkFacing1 == -1) {
-			g.drawImage(texture.bowMaster[0], (int) x, (int) y, 50, 90, null);
+
+		if (LevelController.player1Character.equals("hunter")) {
+			if (KeyInput.checkFacing1 == -1) {
+				g.drawImage(texture.bowMaster[0], (int) x, (int) y, 50, 90, null);
 			
 
-		} else {
-			g.drawImage(texture.bowMaster[1], (int) x, (int) y, 50, 90, null);
+			} else {
+				g.drawImage(texture.bowMaster[1], (int) x, (int) y, 50, 90, null);
 			
 
+			}
 		}
+		
+		if (LevelController.player1Character.equals("wizard")) {
+			if (KeyInput.checkFacing1 == -1) {
+				g.drawImage(texture.wizard[0], (int) x, (int) y, 50, 90, null);
+			
 
+			} else {
+				g.drawImage(texture.wizard[1], (int) x, (int) y, 50, 90, null);
+			
+
+			}
+		}
+		
+		
+		if (LevelController.player1Character.equals("assassin")) {
+			
+			if (KeyInput.checkFacing1 == -1) {
+				g.drawImage(texture.assassin[0], (int) x, (int) y, 60, 90, null);
+
+			} else  {
+				g.drawImage(texture.assassin[1], (int) x, (int) y, 60, 90, null);
+
+			}
+			
+		}
+		
+		
 	}
+		
+		
+
+	
 
 	@Override
 	public Shape getBounds() {
