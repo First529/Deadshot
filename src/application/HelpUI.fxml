@@ -8,7 +8,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HelpController">
    <children>
-      <Button fx:id="backButton" layoutX="14.0" layoutY="355.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleBack" text="Back">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font></Button>
       <Label layoutX="250.0" layoutY="38.0" text="Control">
          <font>
             <Font name="Courier New Bold" size="24.0" />
@@ -24,22 +27,27 @@
             <Font name="Courier New" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="42.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jump             Space                     /" wrappingWidth="538.41259765625">
+      <Text layoutX="42.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jump             Space                   ctrl" wrappingWidth="538.41259765625">
          <font>
             <Font name="Courier New" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="42.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shoot             G                        L" wrappingWidth="538.4126007556915">
+      <Text layoutX="42.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Shoot             G                        /" wrappingWidth="538.4126007556915">
          <font>
             <Font name="Courier New" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="41.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change velocity  Q, E                   " wrappingWidth="538.4126007556915">
+      <Text layoutX="42.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change velocity  Q, E                    J, K   " wrappingWidth="538.4126007556915">
          <font>
             <Font name="Courier New" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="41.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change angle     Z, C" wrappingWidth="538.4126007556915">
+      <Text layoutX="43.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Change angle     Z, C                    I, O" wrappingWidth="538.4126007556915">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="43.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Melee attack      F                        L" wrappingWidth="538.4126007556915">
          <font>
             <Font name="Courier New" size="18.0" />
          </font>

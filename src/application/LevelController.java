@@ -45,17 +45,16 @@ public class LevelController implements Initializable {
 
 	@FXML
 	private ComboBox<GameCharacter> box2;
-	
+
 	@FXML
 	private TextField field1;
-	
+
 	@FXML
 	private TextField field2;
-	
-	public static String player1Character = null;
-	
-	public static String player2Character = null;
 
+	public static String player1Character = null;
+
+	public static String player2Character = null;
 
 	private Game game;
 
@@ -76,43 +75,67 @@ public class LevelController implements Initializable {
 		GameCharacter character = box1.getValue();
 
 		if (GameCharacter.Assassin.equals(character)) {
-			 field1.setText("assassin");
-			 box2.getItems().remove(GameCharacter.Assassin);
-			 player1Character = field1.getText();
+			field1.setText("assassin");
+			box2.getItems().remove(GameCharacter.Assassin);
+			player1Character = field1.getText();
+			if (!box2.getItems().contains(GameCharacter.Hunter))
+				box2.getItems().add(GameCharacter.Hunter);
+			if (!box2.getItems().contains(GameCharacter.Wizard))
+				box2.getItems().add(GameCharacter.Wizard);
 		}
 
 		if (GameCharacter.Wizard.equals(character)) {
-			 field1.setText("wizard");
-			 box2.getItems().remove(GameCharacter.Wizard);
-			 player1Character = field1.getText();
+			field1.setText("wizard");
+			box2.getItems().remove(GameCharacter.Wizard);
+			player1Character = field1.getText();
+			if (!box2.getItems().contains(GameCharacter.Hunter))
+				box2.getItems().add(GameCharacter.Hunter);
+			if (!box2.getItems().contains(GameCharacter.Assassin))
+				box2.getItems().add(GameCharacter.Assassin);
 		}
 
 		if (GameCharacter.Hunter.equals(character)) {
 			field1.setText("hunter");
 			box2.getItems().remove(GameCharacter.Hunter);
 			player1Character = field1.getText();
+			if (!box2.getItems().contains(GameCharacter.Assassin))
+				box2.getItems().add(GameCharacter.Assassin);
+			if (!box2.getItems().contains(GameCharacter.Wizard))
+				box2.getItems().add(GameCharacter.Wizard);
 		}
 	}
-	
+
 	public void handleSelect2(ActionEvent event) {
 		GameCharacter character = box2.getValue();
 
 		if (GameCharacter.Assassin.equals(character)) {
-			 field2.setText("assassin");
-			 box1.getItems().remove(GameCharacter.Assassin);
-			 player2Character = field2.getText();
+			field2.setText("assassin");
+			box1.getItems().remove(GameCharacter.Assassin);
+			player2Character = field2.getText();
+			if (!box1.getItems().contains(GameCharacter.Hunter))
+				box1.getItems().add(GameCharacter.Hunter);
+			if (!box1.getItems().contains(GameCharacter.Wizard))
+				box1.getItems().add(GameCharacter.Wizard);
 		}
 
 		if (GameCharacter.Wizard.equals(character)) {
-			 field2.setText("wizard");
-			 box1.getItems().remove(GameCharacter.Wizard);
-			 player2Character = field2.getText();
+			field2.setText("wizard");
+			box1.getItems().remove(GameCharacter.Wizard);
+			player2Character = field2.getText();
+			if (!box1.getItems().contains(GameCharacter.Hunter))
+				box1.getItems().add(GameCharacter.Hunter);
+			if (!box1.getItems().contains(GameCharacter.Assassin))
+				box1.getItems().add(GameCharacter.Assassin);
 		}
 
 		if (GameCharacter.Hunter.equals(character)) {
 			field2.setText("hunter");
 			box1.getItems().remove(GameCharacter.Hunter);
 			player2Character = field2.getText();
+			if (!box1.getItems().contains(GameCharacter.Assassin))
+				box1.getItems().add(GameCharacter.Assassin);
+			if (!box1.getItems().contains(GameCharacter.Wizard))
+				box1.getItems().add(GameCharacter.Wizard);
 		}
 	}
 

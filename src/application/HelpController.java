@@ -9,10 +9,10 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class HelpController {
-	
+
 	@FXML
 	private Button backButton;
-	
+
 	private Stage stage;
 
 	public void handleBack(ActionEvent event) {
@@ -28,5 +28,5 @@ public class HelpController {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
