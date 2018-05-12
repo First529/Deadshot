@@ -31,7 +31,7 @@ public class Controller implements Initializable {
 	}
 
 	@FXML
-	public void handlePlay(ActionEvent event) {
+	public void handlePlay() {
 		stage = (Stage) play.getScene().getWindow();
 		stage.close();
 		try {

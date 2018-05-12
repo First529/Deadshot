@@ -9,14 +9,19 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import application.Controller;
 import application.LevelController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class Game extends Canvas implements Runnable {
 
 	private boolean running = false;
-	
+
 	public static String URL = null;
 
 	private Thread thread;
@@ -28,9 +33,11 @@ public class Game extends Canvas implements Runnable {
 	private BufferedImage level = null;
 
 	public static Texture texture;
-	
+
 	public static Player1 p1;
 	public static Player2 p2;
+
+	private Stage stage;
 
 	private void init() {
 		WIDTH = getWidth();
@@ -42,7 +49,7 @@ public class Game extends Canvas implements Runnable {
 		level = loader.loadImage(URL);
 
 		handler = new Handler();
-		
+
 		p1 = new Player1(100, 100, handler, ObjectId.Player1);
 		p2 = new Player2(700, 100, handler, ObjectId.Player2);
 
@@ -59,7 +66,6 @@ public class Game extends Canvas implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 	}
-	
 
 	@Override
 	public void run() {
@@ -109,7 +115,6 @@ public class Game extends Canvas implements Runnable {
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect(0, 0, getWidth(), getHeight());
 		handler.render(g2d);
-		
 
 		g2d.setColor(Color.gray);
 		g2d.fillRect(5, 5, 200, 25); // player2
@@ -140,7 +145,7 @@ public class Game extends Canvas implements Runnable {
 			g2d.drawString(String.format("%.2f", Arrow.angle), 70, 100);
 			g2d.drawString(String.format("%.2f", Arrow.initV), 80, 125);
 		}
-		
+
 		if (LevelController.player2Character.equals("hunter")) {
 			g2d.drawString("Angle: ", 650, 100);
 			g2d.drawString("Velocity: ", 650, 125);
@@ -153,14 +158,19 @@ public class Game extends Canvas implements Runnable {
 
 		if (Player2.isSpellBarFull())
 			g2d.fillRect(690, 40, 100, 25);
-		
 
-		bs.show(); 
-		
+		if (Player2.getHP() <= 0) {
+			running = false;
+			JOptionPane.showMessageDialog(null, "Player 1 win");
+		}
+		if (Player1.getHP() <= 0) {
+			running = false;
+			JOptionPane.showMessageDialog(null, "Player 2 win");
+		}
+
+		bs.show();
 
 	}
-
-
 
 	public static Texture getInstance() {
 		return texture;

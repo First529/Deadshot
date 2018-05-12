@@ -135,7 +135,7 @@ public class KeyInput extends KeyAdapter {
 								handler.addObject(arrow2);
 							}
 							if (LevelController.player2Character.equals("assassin")) {
-								pressedF = false;
+								pressedL = false;
 								sword2 = new Sword(tempObject.getX(), tempObject.getY(), ObjectId.Sword2, handler,
 										tempObject.getFacing() * 10);
 								handler.addObject(sword2);
