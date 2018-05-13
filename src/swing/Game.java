@@ -37,9 +37,9 @@ public class Game extends Canvas implements Runnable {
 	public static Player1 p1;
 	public static Player2 p2;
 
-	private Stage stage;
 
 	private void init() {
+		
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
 
@@ -160,12 +160,16 @@ public class Game extends Canvas implements Runnable {
 			g2d.fillRect(690, 40, 100, 25);
 
 		if (Player2.getHP() <= 0) {
-			running = false;
 			JOptionPane.showMessageDialog(null, "Player 1 win");
+
+			handler.object.remove(p2);
+			running = false;
 		}
 		if (Player1.getHP() <= 0) {
-			running = false;
 			JOptionPane.showMessageDialog(null, "Player 2 win");
+			handler.object.remove(p1);
+			running = false;
+		
 		}
 
 		bs.show();

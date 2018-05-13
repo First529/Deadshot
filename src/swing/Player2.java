@@ -16,7 +16,7 @@ public class Player2 extends GameObject {
 	private double width = 32, height = 64;
 	private double gravity = 0.5;
 	private final double MAX_SPEED = 10;
-	private static int player2HP = 200;
+	private static int player2HP;
 	private static boolean hit = false;
 	public static int hitCount = 0;
 
@@ -35,6 +35,7 @@ public class Player2 extends GameObject {
 	public Player2(double x, double y, Handler handler, ObjectId id) {
 		super(x, y, id);
 		this.handler = handler;
+		player2HP = 200;
 		rand = new Random();
 	}
 
@@ -103,6 +104,14 @@ public class Player2 extends GameObject {
 
 					}
 					if (getBoundsLeft().intersects((Rectangle2D) tempObject.getBounds())) {
+						player2HP -= rand.nextInt(3) + 1;
+						hit = true;
+						hitCount++;
+						KeyInput.pressedF = false;
+						
+
+					}
+					if (getBounds().intersects((Rectangle2D) tempObject.getBounds())) {
 						player2HP -= rand.nextInt(3) + 1;
 						hit = true;
 						hitCount++;

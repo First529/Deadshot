@@ -18,7 +18,7 @@ public class Player1 extends GameObject {
 	private double width = 32, height = 64;
 	private double gravity = 0.5;
 	private final double MAX_SPEED = 10;
-	private static int player1HP = 200;
+	private static int player1HP;
 	private static boolean hit = false;
 	public static int hitCount = 0;
 	
@@ -37,6 +37,7 @@ public class Player1 extends GameObject {
 	public Player1(double x, double y, Handler handler, ObjectId id) {
 		super(x, y, id);
 		this.handler = handler;
+		player1HP = 200;
 		rand = new Random();
 	}
 

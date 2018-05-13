@@ -176,7 +176,7 @@ public class LevelController implements Initializable {
 		JFrame frame = new JFrame("Dead shot");
 		frame.add(game);
 		frame.pack();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
