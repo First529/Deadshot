@@ -26,10 +26,15 @@ Deadshot is 2D shooting game for 2 players on 1 computer. Players will fight eac
 
 ![map2](pics/map2zoom.png)
 
+
 public void loadImageLevel(BufferedImage image) {
+
 		int w = image.getWidth();
+		
 		int h = image.getHeight();
+		
 		System.out.println(w + " x " + h);
+		
 		for (int i = 0; i < h; i++) {
 			for (int j = 0; j < w; j++) {
 				// reference
@@ -50,8 +55,11 @@ public void loadImageLevel(BufferedImage image) {
 				if (red == 255 && green == 0 && blue == 0) {
 					addObject(new Block(i * 32, j * 32, 2, ObjectId.BlockLava));
 				}
+			
 			}
+		
 		}
+	
 	}
   
   Block diffecrentiate by pixel's color. 
