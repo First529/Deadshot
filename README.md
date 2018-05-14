@@ -59,3 +59,33 @@ Deadshot is 2D shooting game for 2 players on 1 computer. Players will fight eac
 	
   
   Block diffecrentiate by pixel's color. 
+  
+  		if (i <= 50) {
+			if (i >= 50) handler.removeObject(KeyInput.arrow); 
+			time += timePos;
+			time1 += timePos;
+			if (KeyInput.checkFacing1 == -1) {
+				
+				x += initV * Math.cos(Math.toRadians(angle))* timePos * 4;
+				realY = ((initV * Math.sin(Math.toRadians(angle))*time) + 0.5*-9.81*time*time);
+				realY2 = ((initV * Math.sin(Math.toRadians(angle))*time1) + 0.5*-9.81*time1*time1);
+				diff = realY2 - realY;
+				y -= diff * 10;
+				System.out.println(totalTime);
+				Collision(object);
+				
+			}
+			if (KeyInput.checkFacing1 == 1) {
+				
+				x -= initV * Math.cos(Math.toRadians(angle))* timePos * 4;
+				realY = ((initV * Math.sin(Math.toRadians(angle))*time) + 0.5*-9.81*time*time);
+				realY2 = ((initV * Math.sin(Math.toRadians(angle))*time1) + 0.5*-9.81*time1*time1);
+				diff = realY2 - realY;
+				y -= diff * 10;
+				Collision(object);
+			}
+			i++;
+		
+		}
+		
+This code represent calculation of projectile motion using projectile motion formula and real gravity.
