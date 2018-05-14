@@ -88,4 +88,4 @@ Deadshot is 2D shooting game for 2 players on 1 computer. Players will fight eac
 		
 		}
 		
-This code represent calculation of projectile motion using projectile motion formula and real gravity.
+This code represent calculation of projectile motion using projectile motion formula and real gravity. First we calculate the position of each y then subtract it to compute delta y then multiply to estimated ratio. For x position we can ig nore it because horizontal speed is constant due to g = 0. 
