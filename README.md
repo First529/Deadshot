@@ -21,5 +21,7 @@ Deadshot is 2D shooting game for 2 players on 1 computer. Players will fight eac
 - To study Swing
 
 ## Map picture
+
 ![map1] (pics/map1zoom.png)
+
 ![map2] (pics/map2zoom.png)
