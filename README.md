@@ -58,7 +58,7 @@ Deadshot is 2D shooting game for 2 players on 1 computer. Players will fight eac
 	
 	
   
-  Block diffecrentiate by pixel's color. 
+  Block differrentiate by pixel's color. 
   
   		if (i <= 50) {
 			if (i >= 50) handler.removeObject(KeyInput.arrow); 
