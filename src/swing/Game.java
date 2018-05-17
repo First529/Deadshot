@@ -22,7 +22,7 @@ public class Game extends Canvas implements Runnable {
 
 	private boolean running = false;
 
-	public static String URL = null;
+	public static String URL;
 
 	private Thread thread;
 
@@ -46,7 +46,7 @@ public class Game extends Canvas implements Runnable {
 		texture = new Texture();
 
 		ImageLoader loader = new ImageLoader();
-		level = loader.loadImage(URL);
+		level = loader.loadImage("/images/level.png");
 
 		handler = new Handler();
 

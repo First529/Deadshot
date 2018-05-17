@@ -26,13 +26,13 @@ public class Texture {
 		
 		ImageLoader loader = new ImageLoader();
 		try {
-			block_sheet = loader.loadImage("/2mzh3s1.png");
-			wizard_sheet = loader.loadImage("/Wizard.png");
-			assassin_sheet = loader.loadImage("/Assassin.png");
-			bow_master_sheet = loader.loadImage("/Bow_Master.png");
-			fireball = loader.loadImage("/fireball.png");
-			sword = loader.loadImage("/weapons.png");
-			arrow_sheet = loader.loadImage("/arrow.png");
+			block_sheet = loader.loadImage("/images/2mzh3s1.png");
+			wizard_sheet = loader.loadImage("/images/Wizard.png");
+			assassin_sheet = loader.loadImage("/images/Assassin.png");
+			bow_master_sheet = loader.loadImage("/images/Bow_Master.png");
+			fireball = loader.loadImage("/images/fireball.png");
+			sword = loader.loadImage("/images/weapons.png");
+			arrow_sheet = loader.loadImage("/images/arrow.png");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

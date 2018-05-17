@@ -15,14 +15,14 @@
          <graphic>
             <ImageView fitHeight="144.0" fitWidth="254.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pics/map1.png" />
+                  <Image url="@../images/map1.png" />
                </image></ImageView>
          </graphic></Button>
       <Button fx:id="level1" layoutX="328.0" layoutY="175.0" mnemonicParsing="false" onAction="#handleLevel2" prefHeight="160.0" prefWidth="166.0">
          <graphic>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../pics/map2.png" />
+                  <Image url="@../images/map2.png" />
                </image></ImageView>
          </graphic></Button>
       <Button fx:id="backButton" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleBack" text="Back">

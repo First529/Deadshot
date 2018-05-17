@@ -141,14 +141,14 @@ public class LevelController implements Initializable {
 
 	public void handleLevel(ActionEvent event) {
 		createGame();
-		game.URL = "/level.png";
+//		game.URL = "/images/level.png";
 		game.start();
 
 	}
 
 	public void handleLevel2(ActionEvent event) {
 		createGame();
-		game.URL = "/level2.png";
+//		game.URL = "/images/level2.png";
 		game.start();
 	}
 
@@ -171,7 +171,6 @@ public class LevelController implements Initializable {
 		game = new Game();
 		game.setPreferredSize(new Dimension(800, 575));
 		game.setMaximumSize(new Dimension(800, 600));
-		game.URL = "/level2.png";
 
 		JFrame frame = new JFrame("Dead shot");
 		frame.add(game);
