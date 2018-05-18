@@ -41,7 +41,7 @@ public class Controller implements Initializable {
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception ex) {
-			System.out.println("Can't open game.");
+			System.out.println("Couldn't open game.");
 		}
 	}
 
@@ -56,7 +56,7 @@ public class Controller implements Initializable {
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't open help menu");
 		}
 	}
 

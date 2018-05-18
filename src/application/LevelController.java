@@ -162,7 +162,7 @@ public class LevelController implements Initializable {
 			stage.setScene(scene);
 			stage.show();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't open main menu");
 		}
 	}
 

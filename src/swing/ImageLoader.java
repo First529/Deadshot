@@ -13,7 +13,7 @@ public class ImageLoader {
 		try {
 			image = ImageIO.read(getClass().getResource(imagePath));
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Couldn't open image");
 		}
 		return image;
 	}

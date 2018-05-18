@@ -34,7 +34,7 @@ public class Texture {
 			sword = loader.loadImage("/images/weapons.png");
 			arrow_sheet = loader.loadImage("/images/arrow.png");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Couldn't find image");
 		}
 		
 		getTextures();
