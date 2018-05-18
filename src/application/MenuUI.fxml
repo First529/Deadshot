@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="611.0" fitWidth="706.0" layoutX="-13.0" layoutY="-72.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../pics/menuPicture.png" />
+            <Image url="@../images/menuPicture.png" />
          </image>
       </ImageView>
       <Button fx:id="help" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="222.0" mnemonicParsing="false" onAction="#handleHelp" prefHeight="50.0" prefWidth="140.0" text="Help" textFill="#a11010">
